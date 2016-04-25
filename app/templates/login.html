@@ -1,5 +1,5 @@
-<div class="container-fluid center-login" >
-    <form name="loginForm" class="signup" ng-controller="loginCtrl" novalidate/>
+<div class="container-fluid col-md-4 center-login" >
+    <form name="loginForm" class="signup" novalidate/>
         
         <h1 class="signup-title">News@World</h1>
         <p class="text-center">LOGIN PANEL</p>
@@ -56,7 +56,7 @@
         <button class="signup-button" ng-disabled="!loginForm.$valid" ng-click="loginClick()">Sign in</button>
         <button class="signup-button2" type="submit" id="guest" name="guest" value="Guest"> Guest</button>
     <hr>
-    <a href="../Views/register.html" class="text-center"> <p> You need account? Sign up! </p> </a>
+    <a ui-sref="register" class="text-center"> <p> You need account? Sign up! </p> </a>
 
-</form>
+    </form>
 </div>

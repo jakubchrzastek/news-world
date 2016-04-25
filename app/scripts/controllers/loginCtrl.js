@@ -1,12 +1,6 @@
-(function(){
 'use strict';
 
-angular.module('newsApp', ['ngMessages'])
+angular.module('newsApp')
 .controller('loginCtrl', ['$scope', function($scope){
-
-}]);  
-  
-
-   
-
-})();
+ 	console.log("loginCtrl");
+}]);

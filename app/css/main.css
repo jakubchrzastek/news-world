@@ -1,10 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Wellfleet&subset=latin,latin-ext);
 @import url(http://fonts.googleapis.com/css?family=Wellfleet&subset=latin,latin-ext);
 @import url(https://fonts.googleapis.com/css?family=Roboto:300&subset=latin,latin-ext);
-* {
-  margin: 0;
-  padding: 0; }
-
 .center-login {
   top: 50%;
   transform: translateY(-50%);
