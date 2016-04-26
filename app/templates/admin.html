@@ -1,0 +1,27 @@
+<div id="wrapper">
+    <div id="sidebar">
+        <div class="semifluid-layout">
+            <div class="sidebar-logo">
+                <a ui-sref='login'> News@World - Dashboard </a>
+            </div>
+            <nav class="sidebar-navigation">
+            <ul>
+            <li ng-repeat="link in adminMenu">
+                <a ui-sref="{{link.state}}"> <i class="{{link.icon}}"></i> {{link.text}}</a>
+            </li>
+            </ul>
+            </nav>
+            <div class="sidebar-copyrights">
+                Copyright &copy; News@World 2016
+            </div>
+        </div>
+    </div>
+       
+    <main class="container-fluid">
+        <div class="row">
+             <div class="container-fluid col-md-12">
+                <div ui-view></div>
+             </div>   
+        </div>
+    </main>
+</div>

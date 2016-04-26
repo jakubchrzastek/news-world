@@ -1,0 +1,59 @@
+<div class="row">
+
+<div class="search-panel">
+    <div class="row">
+        <h4>Article Setting:</h4>
+            <hr>
+                <div class="form-horizontal">
+                        <div class="row">
+                           <div class="col-md-6">
+                            <div class="form-group">
+                                    <label class="col-md-3 control-label required">Find Article</label>
+
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" placeholder="Enter article title" ng-model="searchFilter">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label required">Category</label>
+
+                                    <div class="col-md-9">
+                                        <select class="form-control" >
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+</div>
+
+<div class="block">
+        <div class="table-responsive">
+        <table class="table table-striped">
+             <thead>
+                  <tr>
+                     <th> ID </th>
+                     <th> Article Title </th>
+                     <th> Article Content </th>
+                     <th> Source </th>
+                     <th> Action </th>
+                  </tr>
+            </thead>
+            <tbody>
+                  <tr ng-repeat="article in news2Data.news | filter : searchFilter">
+                     <td> {{ article.id }} </td>
+                     <td> {{ article.title }} </td>
+                     <td> {{ article.description }} </td>
+                     <td> {{ article.source }} </td>
+                     <td> <button class="btn btn-xs btn-danger" ng-click="deleteArticle($index)"><i class="fa fa-trash fa-2x"></i></button></td>
+                  </tr>
+            </tbody>
+        </table>
+    </div> 
+</div>  
+
+</div> 
