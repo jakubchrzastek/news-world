@@ -16,5 +16,5 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 
 		$urlRouterProvider.otherwise('/login');
 
-	console.log("routeLoad");
+		console.log("routeLoad");
 	});

@@ -6,7 +6,7 @@ var uglify = require('gulp-uglify');
 
 
 gulp.task("sass", function () {
-  return gulp.src("./app/sass/main.sass")
+  return gulp.src("./app/sass/*.sass")
     .pipe(plumber())
     .pipe(sass())
     .pipe(gulp.dest("./app/css/"));
@@ -31,7 +31,7 @@ gulp.task("css", function () {
 });
 
 gulp.task("watch", function() {
-  gulp.watch("./app/sass/main.sass", ["sass"]);
+  gulp.watch("./app/sass/*.sass", ["sass"]);
   gulp.watch("./app/index.html", ["html"]);
 });
 
