@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="search-panel">
+		<a><button class="btn"> BACK </button></a>
+	</div>
+	   
+	<article class="message-panel container-fluid">
+		<span class="news-date"> {{ article.publish_date }} </span>
+		<h3 id="news-title"> {{ article.title }} </h3>
+		<hr>
+		<img class="img-responsive col-md-6" ng-src="{{ article.image_url }}">
+
+		<span class="col-md-6"> {{ article.text }} </span> 
+		<hr>
+		<span id="news-source"> <b>Source: {{ article.source }}</b> </span>
+	</article>
+</div>

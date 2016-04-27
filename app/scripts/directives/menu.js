@@ -5,7 +5,7 @@ angular.module('newsApp')
 		return {
 			restrict: 'E',
 			replace: true,
-			templateUrl: 'templates/_menuAdmin.html',
+			templateUrl: 'templates/_menu.html',
 			scope: {
 				content: '='
 			},

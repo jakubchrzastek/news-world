@@ -3,11 +3,6 @@
 angular.module('newsApp', ['ui.router', 'ngMessages'])
 	.config(function($stateProvider, $urlRouterProvider) {
 		$stateProvider
-			.state('home', {
-				url: '/',
-				templateUrl: 'templates/home.html',
-				controller: 'homeCtrl'
-			})
 			.state('login', {
 				url: '/login',
 				templateUrl: 'templates/login.html',
@@ -30,12 +25,27 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 			.state('admin.lastNews', {
 				url: '/lastNews',
 				templateUrl: 'templates/admin-lastnews.html',
-				controller: 'adminLastNewsCtrl'
+				controller: 'lastNewsCtrl'
 			})
 			.state('admin.manageArticles', {
-				url: '/managearticles',
+				url: '/manageArticles',
 				templateUrl: 'templates/admin-managearticles.html',
 				controller: 'adminManageArticlesCtrl'
+			})
+			.state('user', {
+				url: '/user',
+				templateUrl: 'templates/user.html',
+				controller: 'userCtrl'
+			})
+			.state('user.lastNews', {
+				url: '/lastnews',
+				templateUrl: 'templates/user-lastnews.html',
+				controller: 'lastNewsCtrl'
+			})
+			.state('article', {
+				url: '/article/:articleId',
+				templateUrl: 'templates/article.html',
+				controller: 'fullArticleCtrl'
 			});
 
 		$urlRouterProvider.otherwise('/login');

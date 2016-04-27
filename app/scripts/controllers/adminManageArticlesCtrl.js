@@ -3,9 +3,9 @@
 angular.module('newsApp')
 	.controller('adminManageArticlesCtrl', ['$scope', '$http', function ($scope, $http) {
 	
-    	$http.get('http://news-world.iiar.pwr.edu.pl/news').success(function(data2){
+    	$http.get('http://news-world.iiar.pwr.edu.pl/news').success(function(data){
         
-            $scope.ManageArticles = data2;
+            $scope.ManageArticles = data;
         });
 
     	$scope.deleteArticle = function (index) {
