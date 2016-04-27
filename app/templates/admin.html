@@ -4,24 +4,18 @@
             <div class="sidebar-logo">
                 <a ui-sref='login'> News@World - Dashboard </a>
             </div>
-            <nav class="sidebar-navigation">
-            <ul>
-            <li ng-repeat="link in adminMenu">
-                <a ui-sref="{{link.state}}"> <i class="{{link.icon}}"></i> {{link.text}}</a>
-            </li>
-            </ul>
-            </nav>
+                <menu content="adminMenu" />
             <div class="sidebar-copyrights">
                 Copyright &copy; News@World 2016
             </div>
         </div>
     </div>
        
-    <main class="container-fluid">
+    <section class="container-fluid">
         <div class="row">
-             <div class="container-fluid col-md-12">
+            <div class="container-fluid col-md-12">
                 <div ui-view></div>
-             </div>   
+            </div>   
         </div>
-    </main>
+    </section>
 </div>

@@ -1,11 +1,12 @@
 <div class="container-fluid center-login" >
     <form name="loginForm" class="signup" novalidate>
-        
+
         <h1 class="signup-title">News@World</h1>
         <p class="text-center">LOGIN PANEL</p>
 
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1"> <i class="fa fa-user"></i> </span>
+       
         <input 
         type="text" 
         class="signup-input form-control" 
@@ -17,20 +18,21 @@
         required
         ng-pattern ="/^[a-zA-Z0-9]*$/"
         ng-minlength="5"
-        ng-maxlength="20">
+        ng-maxlength="20" />
 
-     </div>
+    </div>
 
-        <div ng-messages="loginForm.login.$error" ng-show="loginForm.$submitted || loginForm.login.$touched">
-            <span ng-message="required" class="alert alert-danger">Login field is required!</span>
-            <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers!</span>
-            <span ng-message="maxlength" class="alert alert-danger">Login can not be longer than 20 characters!</span>
-            <span ng-message="minlength" class="alert alert-danger">Login can not be shorter than 5 characters!</span>
-        </div>
+    <div ng-messages="loginForm.login.$error" ng-show="loginForm.$submitted || loginForm.login.$touched">
+        <span ng-message="required" class="alert alert-danger">Login field is required!</span>
+        <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers!</span>
+        <span ng-message="maxlength" class="alert alert-danger">Login can not be longer than 20 characters!</span>
+        <span ng-message="minlength" class="alert alert-danger">Login can not be shorter than 5 characters!</span>
+    </div>
 
    
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1"> <i class="fa fa-lock"></i> </span>
+
         <input 
         type="password"
         id="password" 
@@ -42,20 +44,22 @@
         ng-minlength="8"
         ng-maxlength="20"
         class="signup-input form-control" 
-        placeholder="password">
+        placeholder="password" />
     </div>
 
     <div ng-messages="loginForm.password.$error" ng-show="loginForm.$submitted || loginForm.password.$touched">
-            <span ng-message="required" class="alert alert-danger">Password field is required !</span>
-            <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers ! </span>
-            <span ng-message="maxlength" class="alert alert-danger">Password can not be longer than 20 characters!</span>
-            <span ng-message="minlength" class="alert alert-danger">Password can not be shorter than 8 characters!</span>
+        <span ng-message="required" class="alert alert-danger">Password field is required !</span>
+        <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers ! </span>
+        <span ng-message="maxlength" class="alert alert-danger">Password can not be longer than 20 characters!</span>
+        <span ng-message="minlength" class="alert alert-danger">Password can not be shorter than 8 characters!</span>
     </div>
 
 
         <button class="signup-button" ng-disabled="!loginForm.$valid" ui-sref="admin">Sign in</button>
         <button class="signup-button2" type="submit" id="guest" name="guest" value="Guest"> Guest</button>
-    <hr>
+
+    <hr/>
+
     <a ui-sref="register" class="text-center"> <p> You need account? Sign up! </p> </a>
 
     </form>
