@@ -1,16 +1,20 @@
 <div class="row">
-	<div class="search-panel">
-		<a><button class="btn"> BACK </button></a>
-	</div>
-	   
-	<article class="message-panel container-fluid">
-		<span class="news-date"> {{ article.publish_date }} </span>
-		<h3 id="news-title"> {{ article.title }} </h3>
-		<hr>
-		<img class="img-responsive col-md-6" ng-src="{{ article.image_url }}">
+	<div class="container-fluid">
+		<div class="search-panel">
+			<button class="btn btn-warning btn-md" ng-click="backTo()"><span class="glyphicon glyphicon-arrow-left"></span> BACK</button>
+		</div>
+		   
+		<article class="message-panel container-fluid">
+			<span class="news-date"> {{ article.publish_date }} </span>
+			<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-thumbs-up"></span> Like</button>
+			<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-thumbs-down"></span> Unike</button>
+			<h3 id="news-title"> {{ article.title }} </h3>
+			<hr/>
+			<img class="img-responsive col-md-6" ng-src="{{ article.image_url }}">
 
-		<span class="col-md-6"> {{ article.text }} </span> 
-		<hr>
-		<span id="news-source"> <b>Source: {{ article.source }}</b> </span>
-	</article>
+			<span class="col-md-6"> {{ article.text }} </span> 
+			<hr/>
+			<span id="news-source"> <b>Source: {{ article.source }}</b> </span>
+		</article>
+	</div>
 </div>
