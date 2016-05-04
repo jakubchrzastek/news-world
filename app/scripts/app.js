@@ -46,6 +46,16 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 				url: '/article/:articleId',
 				templateUrl: 'templates/article.html',
 				controller: 'fullArticleCtrl'
+			})
+			.state('guest', {
+				url: '/guest',
+				templateUrl: 'templates/guest.html',
+				controller: 'guestCtrl'
+			})
+			.state('guest.lastNews', {
+				url: '/lastnews',
+				templateUrl: 'templates/lastnews.html',
+				controller: 'lastNewsCtrl'
 			});
 
 		$urlRouterProvider.otherwise('/login');
