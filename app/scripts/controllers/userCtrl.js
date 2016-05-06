@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('newsApp')
-	.controller('userCtrl', [ '$scope', function($scope){
+	.controller('userCtrl', [ '$scope', '$location', 'UserValid', 
+		function($scope, $location, UserValid){
+
+		if(UserValid.userData.role!=='user')
+			$location.path('/login');
 
 		$scope.userMenu = [
 			{

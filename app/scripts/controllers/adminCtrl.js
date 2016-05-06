@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('newsApp')
-	.controller('adminCtrl', [ '$scope', function($scope){
+	.controller('adminCtrl', [ '$scope', '$location', 'UserValid', 
+		function($scope, $location, UserValid) {
+
+		if(UserValid.userData.role!=='admin')
+			$location.path('/login');
 
 		$scope.adminMenu = [
 			{

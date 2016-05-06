@@ -1,5 +1,5 @@
 <div class="container-fluid center-login" >
-    <form name="loginForm" class="signup" ng-submit="signIn(user.login, user.password)"novalidate>
+    <form name="loginForm" class="signup" ng-submit="signIn(user.login, user.password)" novalidate>
 
         <h1 class="signup-title">News@World</h1>
         <p class="text-center">LOGIN PANEL</p>
@@ -55,7 +55,7 @@
     </div>
 
 
-        <button class="signup-button" ng-disabled="!loginForm.$valid" ui-sref="admin">Sign in</button>
+        <input type="submit" class="signup-button" ng-disabled="!loginForm.$valid" value="Submit"/>
         <button class="signup-button2" type="submit" id="guest" name="guest" ui-sref="guest"> Guest</button>
 
     <hr/>

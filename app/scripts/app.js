@@ -61,4 +61,10 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 		$urlRouterProvider.otherwise('/login');
 
 		console.log("routeLoad");
-	});
+	}).run([ '$rootScope', function($rootScope){ //przenieśc do userValid
+
+		//if(localStorage.token)
+			//http.get()
+		//}
+
+	}]); //kontroler root
