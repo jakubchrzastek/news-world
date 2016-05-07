@@ -1,6 +1,7 @@
 <div class="container-fluid center-register">
 
-        <form name="registrationForm" class="register" novalidate>
+    <form name="registrationForm" class="register" ng-submit="signUp(user.login, user.email, user.password, 
+    user.passwordRepeat)" novalidate>
             <h1 class="register-title">New@World</h1>
 			<p class="text-center">REGISTRATION PANEL</p>
 
@@ -88,7 +89,7 @@
 
 		<br>
 
-		<button class="signup-button" ng-disabled="!registrationForm.$valid" ng-click="registrationClick()">Register</button>
+		<input type="submit" class="signup-button" ng-disabled="!registrationForm.$valid" value="Register"></input>
 
     	<button class="signup-button2" ui-sref="login"> Back </button>
 

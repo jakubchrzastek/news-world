@@ -6,6 +6,7 @@ angular.module('newsApp')
 	return{
 
 		userData: {},
+		createData: {},
 
 		signIn: function(login,password){
 			var promise = $q.defer(); //nowy promise
@@ -28,6 +29,27 @@ angular.module('newsApp')
 			});
 
 			return promise.promise;
+		},
+
+		signUp: function(login, email, password, passwordRepeat){
+			var promise2 = $q.defer(); //nowy promise
+			var account = this;
+			$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/users/sign_up', {		
+				user: {
+					login: login,
+					email: email,
+					password: password,
+					password_confirmation: passwordRepeat
+				}
+			}).success(function(response){
+				account.createData = response;
+				console.log("Zarejestrowano!");
+			}).error(function(){
+				console.log("Nie udało się!");
+				promise2.reject(response);
+			});
+
+			return promise2.promise;
 		}
 
 	}

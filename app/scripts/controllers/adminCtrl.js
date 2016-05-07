@@ -11,13 +11,19 @@ angular.module('newsApp')
 			{
 				icon: 'fa fa-newspaper-o',
 				state: 'admin.lastNews',
-				text: 'Last News'
+				text: 'General News'
 			},
 
 			{
 				icon: 'fa fa-wrench',
 				state: 'admin.manageArticles',
 				text: 'Manage Articles'
+			},
+
+			{
+				icon: 'fa fa-users',
+				state: '',
+				text: 'Manage Users'
 			},
 
 			{	
