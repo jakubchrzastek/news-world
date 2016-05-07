@@ -8,6 +8,10 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 				templateUrl: 'templates/login.html',
 				controller: 'loginCtrl'
 			})
+			.state('setcategory', {
+				url: '/setcategory',
+				templateUrl: 'templates/setcategory.html'
+			})
 			.state('logout', {
 				url: '/logout',
 				controller: 'logoutCtrl'
@@ -59,12 +63,14 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 			});
 
 		$urlRouterProvider.otherwise('/login');
+	})
+	
+	.run([ '$rootScope', 'UserValid', '$http', '$location',
+		function($rootScope,UserValid,$http,$location){
 
-		console.log("routeLoad");
-	}).run([ '$rootScope', function($rootScope){ //przenieśc do userValid
+		UserValid.isSignedIn().then(function(userData) {
+		}, function() {
+    		$location.path('/login');
+		});
+	}]);
 
-		//if(localStorage.token)
-			//http.get()
-		//}
-
-	}]); //kontroler root

@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('newsApp')
-    .controller('registerCtrl', ['$scope', 'UserValid', function($scope,UserValid){
+    .controller('registerCtrl', ['$scope', '$location', 'UserValid', function($scope,$location,UserValid){
 
     $scope.signUp = function(login, email, password, passwordRepeat){
         UserValid.signUp(login, email, password, passwordRepeat)
         .then(function(response){
             console.log(UserValid.createData);
         //poprawna odpowiedz serwera
-        if(UserValid.account.createData.success)
+        if(UserValid.createData.success)
             $location.path('/login');
         else
             $location.path('/register');
