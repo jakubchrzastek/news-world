@@ -36,13 +36,18 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 				templateUrl: 'templates/admin-managearticles.html',
 				controller: 'adminManageArticlesCtrl'
 			})
+			.state('admin.manageUsers', {
+				url: '/manageUsers',
+				templateUrl: 'templates/admin-manageusers.html',
+				controller: 'adminManageUsersCtrl'
+			})
 			.state('user', {
 				url: '/user',
 				templateUrl: 'templates/user.html',
 				controller: 'userCtrl'
 			})
 			.state('user.lastNews', {
-				url: '/lastnews',
+				url: '/lastNews',
 				templateUrl: 'templates/lastnews.html',
 				controller: 'lastNewsCtrl'
 			})
@@ -57,7 +62,7 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 				controller: 'guestCtrl'
 			})
 			.state('guest.lastNews', {
-				url: '/lastnews',
+				url: '/lastNews',
 				templateUrl: 'templates/lastnews.html',
 				controller: 'lastNewsCtrl'
 			});

@@ -22,7 +22,7 @@ angular.module('newsApp')
 
 			{
 				icon: 'fa fa-users',
-				state: '',
+				state: 'admin.manageUsers',
 				text: 'Manage Users'
 			},
 

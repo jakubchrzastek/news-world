@@ -10,11 +10,12 @@ angular.module('newsApp')
 				console.log(UserValid.userData);
 			//poprawna odpowiedz serwera
 			if(UserValid.userData.role==='admin')
-				$location.path('/admin');
+				$location.path('/admin/lastNews');
 			else
-				$location.path('/user');
+				$location.path('/user/lastNews');
 		}, function(response){
 			//niepoprawna odpowiedz serwera
+			swal("Some Error!", "You need fix your mistake", "error");
 		});
 	};
 

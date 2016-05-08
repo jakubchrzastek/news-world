@@ -3,9 +3,9 @@
 angular.module('newsApp')
 	.controller('adminManageArticlesCtrl', ['$scope', '$http', function ($scope, $http) {
 	
-    	$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/news/').success(function(data){
+    	$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/news/').success(function(response){
         
-            $scope.ManageArticles = data;
+            $scope.ManageArticles = response;
 
         });
 
@@ -17,8 +17,7 @@ angular.module('newsApp')
                     headers: {
                         Authorization: 'Token ' + localStorage.getItem('token')
                     }
-                })
-            .success(function(){
+                }).success(function(){
                 swal("Good job!", "You delete article", "success")        	
             });
         };

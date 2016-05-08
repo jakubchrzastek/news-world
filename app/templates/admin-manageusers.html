@@ -2,13 +2,13 @@
 
 <div class="search-panel">
     <div class="row">
-        <h4>Article Setting:</h4>
+        <h4>Manage Users:</h4>
             <hr>
                 <div class="form-horizontal">
                         <div class="row">
                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label required">Find Article</label>
+                                    <label class="col-md-3 control-label required">Find User</label>
 
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" placeholder="Enter article title" ng-model="searchFilter">
@@ -22,8 +22,9 @@
                                     <label class="col-md-3 control-label required">Category</label>
 
                                     <div class="col-md-9">
-                                        <select class="form-control" >
-                                            <option value=""></option>
+                                        <select class="form-control" ng-model="searchFilter">
+                                            <option value="" ></option>
+                                            <option value="arts" >arts</option>
                                         </select>
                                     </div>
                                 </div>
@@ -39,20 +40,20 @@
         <table class="table table-striped">
              <thead>
                   <tr>
-                     <th> ID </th>
-                     <th> Article Title </th>
-                     <th> Article Content </th>
-                     <th> Source </th>
+                     <th> User id </th>
+                     <th> User login </th>
+                     <th> User email </th>
+                     <th> User Categories </th>
                      <th> Action </th>
                   </tr>
             </thead>
             <body>
-                <tr ng-repeat="article in ManageArticles.news | filter : searchFilter">
-                    <td> {{ article.id }} </td>
-                    <td> {{ article.title }} </td>
-                    <td> {{ article.description }} </td>
-                    <td> {{ article.source }} </td>
-                    <td> <button class="btn btn-xs btn-danger" ng-click="deleteNews($index)"><i class="fa fa-trash-o fa-2x"></i></button></td>
+                <tr ng-repeat="user in ManageUsers.users | filter : searchFilter">
+                    <td> {{ user.id }} </td>
+                    <td> {{ user.login }} </td>
+                    <td> {{ user.email }} </td>
+                    <td> {{ user.categories[0].name}} </td>
+                    <td> <button class="btn btn-xs btn-danger" ng-click="deleteUsers($index)"><i class="fa fa-trash-o fa-2x"></i></button></td>
                 </tr>
             </tbody>
         </table>

@@ -9,9 +9,15 @@ angular.module('newsApp')
             console.log(UserValid.createData);
         //poprawna odpowiedz serwera
         if(UserValid.createData.success)
+        {
+            swal("Great Job!", "You create Your account", "success");
             $location.path('/login');
+        }
         else
+        {
+            swal("Some Error!", "You need fix your mistake", "error");
             $location.path('/register');
+        }
     }, function(response){
         //niepoprawna odpowiedz serwera
     });
