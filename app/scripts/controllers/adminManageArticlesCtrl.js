@@ -5,24 +5,32 @@ angular.module('newsApp')
 	
     	$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/news/').success(function(response){
         
-            $scope.ManageArticles = response;
+            $scope.ManageArticles = response.news;
 
         });
 
     	$scope.deleteNews = function ($index) {
 
-            var newsId = $scope.ManageArticles.news[$index].id;
-
-            $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + newsId ,{
+            swal({   
+            title: "Are you sure?", 
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, delete it!",   
+            closeOnConfirm: false }, 
+            function(){  
+            var articleId = $scope.ManageArticles[$index].id;
+            
+            $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/users/' + articleId ,{
                     headers: {
                         Authorization: 'Token ' + localStorage.getItem('token')
                     }
                 }).success(function(){
-                swal("Good job!", "You delete article", "success");
-                $scope.ManageArticles.news.splice($index,1);   	
-            }).error(function(){
-                swal("Something wrong!", "Try again latter", "error");
-            });
+                $scope.ManageArticles.splice($index,1);        
+            }); 
+                swal("Deleted!", "Article has been removed", "success"); });
+
+
         };
 
 }]);

@@ -46,7 +46,7 @@
                   </tr>
             </thead>
             <body>
-                <tr ng-repeat="article in ManageArticles.news | filter : searchFilter">
+                <tr ng-repeat="article in ManageArticles | filter : searchFilter">
                     <td> {{ article.title }} </td>
                     <td> {{ article.description }} </td>
                     <td> {{ article.source }} </td>

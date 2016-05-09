@@ -10,22 +10,34 @@ angular.module('newsApp')
                     }
             }).success(function(response){
         
-            $scope.ManageUsers = response;
-            console.log($scope.ManageUsers);
+            $scope.ManageUsers = response.users;
+
         });
+
 
     	$scope.deleteUsers = function ($index) {
 
-            var userId = $scope.ManageUsers.users[$index].id;
-            console.log(userId);
+            swal({   
+            title: "Are you sure?", 
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, delete it!",   
+            closeOnConfirm: false }, 
+            function(){  
+            var userId = $scope.ManageUsers[$index].id;
+            
             $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/users/' + userId ,{
                     headers: {
                         Authorization: 'Token ' + localStorage.getItem('token')
                     }
                 }).success(function(){
-                $scope.ManageUsers.users.splice($index,1);
-                swal("Good job!", "You delete user", "success");     	
-            });
+                $scope.ManageUsers.splice($index,1);        
+            }); 
+                swal("Deleted!", "User has been removed", "success"); });
+
+
         };
 
 }]);
+

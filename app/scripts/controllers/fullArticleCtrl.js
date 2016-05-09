@@ -26,7 +26,9 @@
                 Authorization: 'Token ' + localStorage.getItem('token')
               }
             }).success(function(){
-              swal({ title: "You like this!", timer: 3000,type: "info", showConfirmButton: false});
+              swal({ title: "You like this!", timer: 2000,type: "success", showConfirmButton: false});
+            }).error(function(){
+              swal({ title: "No permission!", timer: 2000,type: "error", showConfirmButton: false});
             });
         }
       else
@@ -41,7 +43,9 @@
                 Authorization: 'Token ' + localStorage.getItem('token')
               }
             }).success(function(){
-              swal({ title: "You like this!", timer: 3000,type: "info", showConfirmButton: false});
+              swal({ title: "You like this!", timer: 2000,type: "success", showConfirmButton: false});
+            }).error(function(){
+              swal({ title: "No permission!", timer: 2000,type: "error", showConfirmButton: false});
             });
         }
     };
@@ -59,7 +63,10 @@
                 Authorization: 'Token ' + localStorage.getItem('token')
               }
             }).success(function(){
-              swal({ title: "You dislike this!", timer: 3000,type: "info", showConfirmButton: false});
+              swal({ title: "You dislike this!", timer: 2000,type: "error", showConfirmButton: false});
+            })
+            .error(function(){
+              swal({ title: "No permission!", timer: 2000,type: "error", showConfirmButton: false});
             });
         }
         else
@@ -74,7 +81,9 @@
                 Authorization: 'Token ' + localStorage.getItem('token')
               }
             }).success(function(){
-              swal({ title: "You dislike this!", timer: 3000,type: "info", showConfirmButton: false});
+              swal({ title: "You dislike this!", timer: 2000,type: "error", showConfirmButton: false});
+            }).error(function(){
+              swal({ title: "No permission!", timer: 2000,type: "error", showConfirmButton: false});
             });
         }
     }; 

@@ -62,7 +62,7 @@ angular.module('newsApp')
 
 	            var self = this;
 	 
-	            $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me', {
+	            $http.get('http://news-world.iiar.pwr.edu.pl/users/me', {
 	                headers: {
 	                    Authorization: 'Token ' + localStorage.getItem('token')
 	                }

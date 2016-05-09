@@ -7,7 +7,7 @@
             <div class="col-md-12 input-group">
                 <div class="col-md-8">
                     <div class="checkbox">
-                        <label ng-repeat="item in Categories.categories"> 
+                        <label ng-repeat="item in Categories">
                         <input type="checkbox" ng-model="tablica[$index]"> {{ item.name }} </label>
                     </div>
                 </div>
@@ -15,7 +15,7 @@
 
             <hr/>
 
-			<input class="signup-button center-block" type="submit" id="register" value="Send" ng-click='sendCategory(index)'>
+			<input class="signup-button center-block" type="submit" id="register" value="Send" ng-click='sendCategory(tablica)'>
 
         </form>
 	</div>

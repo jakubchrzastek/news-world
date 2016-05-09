@@ -47,7 +47,7 @@
                   </tr>
             </thead>
             <body>
-                <tr ng-repeat="user in ManageUsers.users | filter : searchFilter | filter: categoryFilter">
+                <tr ng-repeat="user in ManageUsers | filter : searchFilter | filter: categoryFilter">
                     <td> {{ user.login }} </td>
                     <td> {{ user.email }} </td>
                     <td> {{ user.categories[0].name}} </td>
