@@ -1,5 +1,5 @@
 <div class="container center-register">
-        <form class="register" method="post" action="" novalidate>
+        <form class="register" novalidate>
             <h1 class="register-title">New@World</h1>
 			<p class="text-center">SET YOUR CATEGORY</p>
 
@@ -7,15 +7,15 @@
             <div class="col-md-12 input-group">
                 <div class="col-md-8">
                     <div class="checkbox">
-                        <label> <input type="checkbox"> test </label>
+                        <label ng-repeat="item in Categories.categories"> 
+                        <input type="checkbox" ng-model="tablica[$index]"> {{ item.name }} </label>
                     </div>
                 </div>
             </div>
 
-            <hr>
+            <hr/>
 
-			<input class="signup-button center-block" type="submit" id="register" name="register" value="Send">
-
+			<input class="signup-button center-block" type="submit" id="register" value="Send" ng-click='sendCategory(index)'>
 
         </form>
 	</div>

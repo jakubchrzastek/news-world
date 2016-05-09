@@ -19,13 +19,7 @@ angular.module('newsApp')
 				state: 'user.lastNews',
 				text: 'General News'
 			},
-
-			{
-				icon: 'fa fa-wrench',
-				state: 'user.findNews',
-				text: 'Find News'
-			},
-
+			
 			{	
 				icon: 'fa fa-times-circle',
 				state: 'logout',

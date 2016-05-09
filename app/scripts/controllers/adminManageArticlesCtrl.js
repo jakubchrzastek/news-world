@@ -9,7 +9,7 @@ angular.module('newsApp')
 
         });
 
-    	$scope.deleteNews = function ($index, headers) {
+    	$scope.deleteNews = function ($index) {
 
             var newsId = $scope.ManageArticles.news[$index].id;
 
@@ -18,7 +18,10 @@ angular.module('newsApp')
                         Authorization: 'Token ' + localStorage.getItem('token')
                     }
                 }).success(function(){
-                swal("Good job!", "You delete article", "success")        	
+                swal("Good job!", "You delete article", "success");
+                $scope.ManageArticles.news.splice($index,1);   	
+            }).error(function(){
+                swal("Something wrong!", "Try again latter", "error");
             });
         };
 

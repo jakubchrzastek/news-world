@@ -10,7 +10,8 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 			})
 			.state('setcategory', {
 				url: '/setcategory',
-				templateUrl: 'templates/setcategory.html'
+				templateUrl: 'templates/setcategory.html',
+				controller: 'setCategoryCtrl'
 			})
 			.state('logout', {
 				url: '/logout',
@@ -72,7 +73,7 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 	
 	.run([ '$rootScope', 'UserValid', '$http', '$location',
 		function($rootScope,UserValid,$http,$location){
-
+			
 		UserValid.isSignedIn().then(function(userData) {
 		}, function() {
     		$location.path('/login');

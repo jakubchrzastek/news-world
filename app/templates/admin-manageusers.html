@@ -22,7 +22,7 @@
                                     <label class="col-md-3 control-label required">Category</label>
 
                                     <div class="col-md-9">
-                                        <select class="form-control" ng-model="searchFilter">
+                                        <select class="form-control" ng-model="categoryFilter">
                                             <option value="" ></option>
                                             <option value="arts" >arts</option>
                                         </select>
@@ -40,7 +40,6 @@
         <table class="table table-striped">
              <thead>
                   <tr>
-                     <th> User id </th>
                      <th> User login </th>
                      <th> User email </th>
                      <th> User Categories </th>
@@ -48,8 +47,7 @@
                   </tr>
             </thead>
             <body>
-                <tr ng-repeat="user in ManageUsers.users | filter : searchFilter">
-                    <td> {{ user.id }} </td>
+                <tr ng-repeat="user in ManageUsers.users | filter : searchFilter | filter: categoryFilter">
                     <td> {{ user.login }} </td>
                     <td> {{ user.email }} </td>
                     <td> {{ user.categories[0].name}} </td>

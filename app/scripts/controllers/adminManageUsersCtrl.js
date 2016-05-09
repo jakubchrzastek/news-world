@@ -11,19 +11,20 @@ angular.module('newsApp')
             }).success(function(response){
         
             $scope.ManageUsers = response;
-
+            console.log($scope.ManageUsers);
         });
 
-    	$scope.deleteUsers = function ($index, headers) {
+    	$scope.deleteUsers = function ($index) {
 
             var userId = $scope.ManageUsers.users[$index].id;
-
+            console.log(userId);
             $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/users/' + userId ,{
                     headers: {
                         Authorization: 'Token ' + localStorage.getItem('token')
                     }
                 }).success(function(){
-                swal("Good job!", "You delete user", "success")        	
+                $scope.ManageUsers.users.splice($index,1);
+                swal("Good job!", "You delete user", "success");     	
             });
         };
 

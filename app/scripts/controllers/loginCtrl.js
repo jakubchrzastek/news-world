@@ -11,8 +11,17 @@ angular.module('newsApp')
 			//poprawna odpowiedz serwera
 			if(UserValid.userData.role==='admin')
 				$location.path('/admin/lastNews');
-			else
-				$location.path('/user/lastNews');
+
+			else{
+				if(UserValid.userData.categories_set){
+					console.log("Posiadam wybrane kategorie");
+					$location.path('/user/lastNews');
+				}
+				else{
+					console.log("Nie posiadam wybranych");
+					$location.path('/setcategory');
+				}
+			} 
 		}, function(response){
 			//niepoprawna odpowiedz serwera
 			swal("Some Error!", "You need fix your mistake", "error");

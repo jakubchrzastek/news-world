@@ -39,7 +39,6 @@
         <table class="table table-striped">
              <thead>
                   <tr>
-                     <th> ID </th>
                      <th> Article Title </th>
                      <th> Article Content </th>
                      <th> Source </th>
@@ -48,7 +47,6 @@
             </thead>
             <body>
                 <tr ng-repeat="article in ManageArticles.news | filter : searchFilter">
-                    <td> {{ article.id }} </td>
                     <td> {{ article.title }} </td>
                     <td> {{ article.description }} </td>
                     <td> {{ article.source }} </td>
