@@ -35,7 +35,7 @@ angular.module('newsApp')
 	            }
 	        }).success(function(){
 	        	console.log('Dane wysłane!');
-	        	$location.path('/user');
+	        	$location.path('/user/lastNews');
 	        });
 
         };
