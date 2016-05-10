@@ -11,7 +11,7 @@ angular.module('newsApp')
                 $scope.ManageUsers = response.users;
             });
     	
-        $scope.deleteUsers = function ($index) { 
+        $scope.deleteUsers = function (userId) { 
             swal({   
             title: "Are you sure?", 
             type: "warning",   
@@ -21,16 +21,20 @@ angular.module('newsApp')
             closeOnConfirm: false 
             }, 
             function(){  
-                var userId = $scope.ManageUsers[$index].id;
-                $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/users/' + userId ,{
-                    headers: {
-                        Authorization: 'Token ' + localStorage.getItem('token')
+                for(var i = 0; i < $scope.ManageUsers.length; i++) {
+                    if($scope.ManageUsers[i].id == userId){
+                        var index = i;  
+                        $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/users/' + userId ,{
+                            headers: {
+                                Authorization: 'Token ' + localStorage.getItem('token')
+                            }
+                        }).success(function(){
+                            $scope.ManageUsers.splice(index ,1);
+                            swal("Deleted!", "User has been removed", "success");         
+                        }); 
                     }
-                }).success(function(){
-                    $scope.ManageUsers.splice($index,1);        
-                }); 
-                    swal("Deleted!", "User has been removed", "success"); 
+                }           
             });
         };
-}]);
+    }]);
 

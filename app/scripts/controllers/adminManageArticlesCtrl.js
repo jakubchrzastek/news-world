@@ -6,7 +6,7 @@ angular.module('newsApp')
             $scope.ManageArticles = response.news;
         });
         
-    	$scope.deleteNews = function ($index) {
+    	$scope.deleteNews = function (articleId) {
             swal({   
             title: "Are you sure?", 
             type: "warning",   
@@ -16,16 +16,19 @@ angular.module('newsApp')
             closeOnConfirm: false 
             }, 
             function(){  
-                var articleId = $scope.ManageArticles[$index].id;
-                $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + articleId ,
-                {
-                    headers: {
-                        Authorization: 'Token ' + localStorage.getItem('token')
+               for(var i = 0; i < $scope.ManageArticles.length; i++) {
+                    if($scope.ManageArticles[i].id == articleId){
+                        var index = i;
+                        $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + articleId ,{
+                            headers: {
+                                Authorization: 'Token ' + localStorage.getItem('token')
+                            }
+                        }).success(function(){
+                            $scope.ManageArticles.splice(index ,1);
+                            swal("Deleted!", "Article has been removed", "success");         
+                        }); 
                     }
-                }).success(function(){
-                    $scope.ManageArticles.splice($index,1);        
-                }); 
-                    swal("Deleted!", "Article has been removed", "success"); 
+                }       
             });
         };
-}]);
+    }]);

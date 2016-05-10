@@ -51,7 +51,7 @@
                     <td> {{ user.login }} </td>
                     <td> {{ user.email }} </td>
                     <td> {{ user.categories[0].name}} </td>
-                    <td> <button class="btn btn-xs btn-danger" ng-click="deleteUsers($index)"><i class="fa fa-trash-o fa-2x"></i></button></td>
+                    <td> <button class="btn btn-xs btn-danger" ng-click="deleteUsers(user.id)"><i class="fa fa-trash-o fa-2x"></i></button></td>
                 </tr>
             </tbody>
         </table>
