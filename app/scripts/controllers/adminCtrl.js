@@ -10,7 +10,7 @@ angular.module('newsApp')
 		$scope.adminMenu = [
 			{
 				icon: 'fa fa-newspaper-o',
-				state: 'admin.lastNews',
+				state: 'admin.news',
 				text: 'General News'
 			},
 
@@ -31,6 +31,6 @@ angular.module('newsApp')
 				state: 'logout',
 				text: 'Logout'
 			}
-		]
+		];
 
 	}]);

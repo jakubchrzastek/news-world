@@ -22,14 +22,13 @@ angular.module('newsApp')
 				self.userData = response.user; // do userdata przypisujemy token/role/categoryset
 				localStorage.setItem('token', response.user.session.token);
 				promise.resolve(response);
-				console.log(self);
 			});
 
 			return promise.promise;
 		},
 
 		signUp: function(login, email, password, passwordRepeat){
-			var promise = $q.defer(); //nowy promise
+			var promise = $q.defer();
 			var self = this;
 			$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/users/sign_up', {		
 				user: {
@@ -39,11 +38,15 @@ angular.module('newsApp')
 					password_confirmation: passwordRepeat
 				}
 			}).success(function(response){
-				self.createData = response;
-				console.log("Zarejestrowano!");
-				promise.resolve(response);
+				if(response.success){   
+                        swal("Great Job!", "You create Your account", "success");
+                        promise.resolve(response);
+                    }
+                    else{
+                        swal("Some Error!", "You need fix your mistake", "error");
+                    	promise.reject(response);
+                    }
 			}).error(function(){
-				console.log("Nie udało się!");
 				promise.reject(response);
 			});
 
@@ -52,35 +55,35 @@ angular.module('newsApp')
 
 				
 		isSignedIn: function() {
-		    var promise = $q.defer();
-		 
-		    
-		    if(this.role) promise.resolve(); /* Jeśli tak, od razu kończysz oczekiwanie sukcesem */
-		    else {
-		        
-		        else {
-		           
-		            var self = this;
-		 
-		           
-		            $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me', {
-		                headers: {
-		                    Authorization: 'Token ' + localStorage.getItem('token')
-		                }
-		            }).success(function(response) {
-		               
-		                self.userData = response.user;
-		                promise.resolve(self.userData);
-		                console.log(self);
-		            }).error(function(err) {
-		                promise.reject(err);
-		            });
-		        }
-		    }
-		 
-		    return promise.promise;
-		}
-
+        	var promise = $q.defer();
+            if(this.role) promise.resolve();
+            else {
+ 
+                if(!localStorage.getItem('token')) promise.reject();
+ 
+                else {
+                var self = this;
+         
+                    $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me', {
+                        headers: {
+                            Authorization: 'Token ' + localStorage.getItem('token')
+                        }
+                    }).success(function(response) {
+                        if(response.success) {
+                            self.userData = response.user;
+                            promise.resolve(self.userData);
+                        }
+                        else {
+                            promise.reject();
+                        }
+                    }).error(function(err) {
+                        promise.reject(err);
+                    });
+                }
+            }
+         
+            return promise.promise;
+        }
 
 	}
 

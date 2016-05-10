@@ -1,21 +1,16 @@
 <div class="container center-register">
-        <form class="register" novalidate>
-            <h1 class="register-title">New@World</h1>
-			<p class="text-center">SET YOUR CATEGORY</p>
-
-            
-            <div class="col-md-12 input-group">
-                <div class="col-md-8">
-                    <div class="checkbox">
-                        <label ng-repeat="item in Categories">
-                        <input type="checkbox" ng-model="tablica[$index]"> {{ item.name }} </label>
-                    </div>
+    <form class="register" novalidate>
+        <h1 class="register-title">New@World</h1>
+		<p class="text-center">SET YOUR CATEGORY</p>
+        <div class="col-md-12 input-group">
+            <div class="col-md-8">
+                <div class="checkbox">
+                    <label ng-repeat="item in Categories">
+                    <input type="checkbox" ng-model="model[$index]"> {{ item.name }} </label>
                 </div>
             </div>
-
-            <hr/>
-
-			<input class="signup-button center-block" type="submit" id="register" value="Send" ng-click='sendCategory(tablica)'>
-
-        </form>
-	</div>
+        </div>
+        <hr/>
+		<input class="signup-button center-block" type="submit" id="register" value="Send" ng-click='sendCategory(model)'>
+    </form>
+</div>

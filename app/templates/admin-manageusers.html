@@ -3,40 +3,40 @@
 <div class="search-panel">
     <div class="row">
         <h4>Manage Users:</h4>
-            <hr>
-                <div class="form-horizontal">
-                        <div class="row">
-                           <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label required">Find User</label>
+            <hr/>
+            <div class="form-horizontal">
+                    <div class="row">
+                       <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label required">Find User</label>
 
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" placeholder="Enter article title" ng-model="searchFilter">
-                                    </div>
-
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="Enter article title" ng-model="searchFilter">
                                 </div>
+
                             </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label required">Category</label>
-
-                                    <div class="col-md-9">
-                                        <select class="form-control" ng-model="categoryFilter">
-                                            <option value="" ></option>
-                                            <option value="arts" >arts</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label required">Category</label>
+
+                                <div class="col-md-9">
+                                    <select class="form-control" ng-model="categoryFilter">
+                                        <option value="" ></option>
+                                        <option value="arts" >arts</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+            </div>
     </div>
 </div>
 
 <div class="block">
-        <div class="table-responsive">
+    <div class="table-responsive">
         <table class="table table-striped">
              <thead>
                   <tr>
@@ -46,7 +46,7 @@
                      <th> Action </th>
                   </tr>
             </thead>
-            <body>
+            <tbody>
                 <tr ng-repeat="user in ManageUsers | filter : searchFilter | filter: categoryFilter">
                     <td> {{ user.login }} </td>
                     <td> {{ user.email }} </td>

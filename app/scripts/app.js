@@ -27,18 +27,18 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 				templateUrl: 'templates/admin.html',
 				controller: 'adminCtrl'
 			})
-			.state('admin.lastNews', {
-				url: '/lastNews',
-				templateUrl: 'templates/lastnews.html',
-				controller: 'lastNewsCtrl'
+			.state('admin.news', {
+				url: '/news',
+				templateUrl: 'templates/news.html',
+				controller: 'newsCtrl'
 			})
 			.state('admin.manageArticles', {
-				url: '/manageArticles',
+				url: '/manage/articles',
 				templateUrl: 'templates/admin-managearticles.html',
 				controller: 'adminManageArticlesCtrl'
 			})
 			.state('admin.manageUsers', {
-				url: '/manageUsers',
+				url: '/manage/users',
 				templateUrl: 'templates/admin-manageusers.html',
 				controller: 'adminManageUsersCtrl'
 			})
@@ -47,10 +47,10 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 				templateUrl: 'templates/user.html',
 				controller: 'userCtrl'
 			})
-			.state('user.lastNews', {
-				url: '/lastNews',
-				templateUrl: 'templates/lastnews.html',
-				controller: 'lastNewsCtrl'
+			.state('user.news', {
+				url: '/news',
+				templateUrl: 'templates/news.html',
+				controller: 'newsCtrl'
 			})
 			.state('article', {
 				url: '/article/:articleId',
@@ -62,19 +62,20 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 				templateUrl: 'templates/guest.html',
 				controller: 'guestCtrl'
 			})
-			.state('guest.lastNews', {
-				url: '/lastNews',
-				templateUrl: 'templates/lastnews.html',
-				controller: 'lastNewsCtrl'
+			.state('guest.news', {
+				url: '/news',
+				templateUrl: 'templates/news.html',
+				controller: 'newsCtrl'
 			});
 
 		$urlRouterProvider.otherwise('/login');
 	})
-	.run(['$rootScope', 'UserValid', '$http', '$location', function($rootScope,UserValid,$http,$location){	
-		UserValid.isSignedIn().then(function(userData) {
-    		$location.path('/' + userData.role);
-		}, function() {
-    		$location.path('/login');
-		});
+	.run(['$rootScope', 'UserValid', '$http', '$location', 
+		function($rootScope, UserValid, $http, $location){	
+			UserValid.isSignedIn().then(function(userData) {
+	    		$location.path('/' + userData.role);
+			}, 
+			function(){
+			    $location.path('/login');
+			});
 	}]);
-

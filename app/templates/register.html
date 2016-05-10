@@ -1,97 +1,80 @@
 <div class="container-fluid center-register">
-
     <form name="registrationForm" class="register" ng-submit="signUp(user.login, user.email, user.password, 
     user.passwordRepeat)" novalidate>
-            <h1 class="register-title">New@World</h1>
-			<p class="text-center">REGISTRATION PANEL</p>
-
-
+        <h1 class="register-title">New@World</h1>
+		<p class="text-center">REGISTRATION PANEL</p>
         <div class="input-group">
-            <input type="text"
-                    id="login"
-                    name="login"
-                    class="form-control"
-                    placeholder="Login"
-                    ng-model="user.login"
-                    required
-                    ng-pattern ="/^[a-żA-Ż0-9]*$/"
-                    ng-minlength="5"
-                    ng-maxlength="20"/>
+            <input 
+                type="text"
+                id="login"
+                name="login"
+                class="form-control"
+                placeholder="Login"
+                ng-model="user.login"
+                required
+                ng-pattern ="/^[a-żA-Ż0-9]*$/"
+                ng-minlength="5"
+                ng-maxlength="20"/>
         </div>
-
            <div ng-messages="registrationForm.login.$error" ng-show="registrationForm.$submitted || registrationForm.login.$touched">
                 <span ng-message="required" class="alert alert-danger">Login field is required!</span>
                 <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers!</span>
                 <span ng-message="maxlength" class="alert alert-danger">Login can not be longer than 20 characters!</span>
                 <span ng-message="minlength" class="alert alert-danger">Login can not be shorter than 5 characters!</span>
-            
             </div>
-        
         <div class="input-group">
             <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            class="form-control" 
-            ng-model="user.email"
-            placeholder="E-mail" 
-            required />
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-control" 
+                ng-model="user.email"
+                placeholder="E-mail" 
+                required />
         </div>
-        
         <div ng-show="registrationForm.$submitted || registrationForm.email.$touched">
             <div ng-messages="registrationForm.email.$error">
               <span ng-message="required" class="alert alert-danger">Email field is required!</span>  
             </div>           
             <span ng-hide="registrationForm.email.$valid" class="alert alert-danger"> E-mail is not valid! </span>
         </div>
-
         <div class="input-group">
             <input 
-            type="password"
-            id="password" 
-            name="password" 
-            class="form-control" 
-            placeholder="Password"
-            ng-model="user.password" 
-            required
-            ng-pattern ="/^[a-żA-Ż0-9]*$/"
-            ng-minlength="8"
+                type="password"
+                id="password" 
+                name="password" 
+                class="form-control" 
+                placeholder="Password"
+                ng-model="user.password" 
+                required
+                ng-pattern ="/^[a-żA-Ż0-9]*$/"
+                ng-minlength="8"
             ng-maxlength="20"/>
         </div>
-        
         <div ng-messages="registrationForm.password.$error" ng-show="registrationForm.$submitted || registrationForm.password.$touched">
 
             <span ng-message="required" class="alert alert-danger">Password field is required !</span>
             <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers ! </span>
             <span ng-message="maxlength" class="alert alert-danger">Password can not be longer than 20 characters!</span>
             <span ng-message="minlength" class="alert alert-danger">Password can not be shorter than 8 characters!</span>
-
         </div>
-        
         <div class="input-group">
             <input 
-            type="password" 
-            id="passwordRepeat"
-            name="passwordRepeat" 
-            class="form-control" 
-            placeholder="Password Repeat" 
-            ng-model="userif.passwordRepeat"
-            required
-            pw-check="password"/>
+                type="password" 
+                id="passwordRepeat"
+                name="passwordRepeat" 
+                class="form-control" 
+                placeholder="Password Repeat" 
+                ng-model="userif.passwordRepeat"
+                required
+                pw-check="password"/>
         </div>
-
         <div ng-messages="registrationForm.passwordRepeat.$error" ng-show="registrationForm.$submitted || registrationForm.passwordRepeat.$touched">
-
             <span ng-message="required" class="alert alert-danger">Repeat Password field is required!</span>
-            <span ng-message="pwmatch" class="alert alert-danger">Passwords must be the same!</span>
-           
+            <span ng-message="pwmatch" class="alert alert-danger">Passwords must be the same!</span>  
         </div>
-
 		<br>
-
 		<input type="submit" class="signup-button" ng-disabled="!registrationForm.$valid" value="Register"></input>
-
     	<button class="signup-button2" ui-sref="login"> Back </button>
-
-        </form>
+    </form>
 </div>

@@ -10,17 +10,19 @@
 				class="btn btn-success btn-sm" 
 				ng-disabled="article.user_voted" 
 				ng-click="like()">
-				<span class="glyphicon glyphicon-thumbs-up"></span> Like</button>
+				<span class="glyphicon glyphicon-thumbs-up"></span> Like
+			</button>
 
 			<button
 				class="btn btn-danger btn-sm" 
 				ng-disabled="article.user_voted" 
 				ng-click="dislike()">
 
-				<span class="glyphicon glyphicon-thumbs-down"></span> Dislike</button>
+				<span class="glyphicon glyphicon-thumbs-down"></span> Dislike
+			</button>
 			<h3 id="news-title"> {{ article.title }} </h3>
 			<hr/>
-			<img class="img-responsive col-md-6" ng-src="{{ article.image_url }}">
+			<img class="img-responsive col-md-6" ng-src="{{ article.image_url }}" />
 
 			<span class="col-md-6"> {{ article.text }} </span> 
 			<hr/>
