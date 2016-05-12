@@ -9,7 +9,6 @@ angular.module('newsApp')
 				//poprawna odpowiedz serwera
 				if(UserValid.userData.role==='admin')
 					$location.path('/admin/news');
-
 				else{
 					if(UserValid.userData.categories_set){
 						$location.path('/user/news');

@@ -20,13 +20,12 @@
 
 				<span class="glyphicon glyphicon-thumbs-down"></span> Dislike
 			</button>
-			<h3 id="news-title"> {{ article.title }} </h3>
+			<h2 class="news-title"> {{ article.title }} </h2>
 			<hr/>
-			<img class="img-responsive col-md-6" ng-src="{{ article.image_url }}" />
-
-			<span class="col-md-6"> {{ article.text }} </span> 
-			<hr/>
-			<span id="news-source"> <b>Source: {{ article.source }}</b> </span>
+			<img class="news-img img-responsive" align="left" ng-src="{{ article.image_url }}" />
+			<p>{{ article.text }}</p> 
+			<hr class="clearfix" />
+			<span class="pull-right"> <b>Source: {{ article.source }}</b> </span>
 		</article>
 	</div>
 </div>

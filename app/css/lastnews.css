@@ -20,6 +20,10 @@ h4 {
     color: #ffd164; }
   .message-panel .news-title {
     margin-top: 10px; }
+  .message-panel .news-img {
+    margin-bottom: 5px;
+    margin-right: 10px;
+    max-width: 350px; }
   .message-panel .news-date {
     position: absolute;
     top: 20px;
@@ -29,14 +33,9 @@ h4 {
     width: 50em;
     overflow: hidden;
     text-overflow: ellipsis; }
-  .message-panel #news-source {
-    position: absolute;
-    bottom: 20px;
-    right: 30px; }
-  .message-panel h3 {
+  .message-panel h2 {
     color: rgba(0, 0, 0, 0.6);
-    font-weight: bold;
-    margin-left: 15px; }
+    font-weight: bold; }
   .message-panel a {
     color: rgba(0, 0, 0, 0.6); }
     .message-panel a:hover {

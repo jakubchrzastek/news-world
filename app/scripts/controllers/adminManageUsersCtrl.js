@@ -11,6 +11,10 @@ angular.module('newsApp')
                 $scope.ManageUsers = response.users;
             });
     	
+        $scope.clearInput = function (){
+            $scope.searchFilter = "";
+        }
+
         $scope.deleteUsers = function (userId) { 
             swal({   
             title: "Are you sure?", 

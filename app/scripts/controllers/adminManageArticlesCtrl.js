@@ -5,6 +5,10 @@ angular.module('newsApp')
     	$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/news/').success(function(response){
             $scope.ManageArticles = response.news;
         });
+
+        $scope.clearInput = function (){
+            $scope.searchFilter = "";
+        }
         
     	$scope.deleteNews = function (articleId) {
             swal({   

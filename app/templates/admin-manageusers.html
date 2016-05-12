@@ -10,10 +10,12 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label required">Find User</label>
 
-                                <div class="col-md-9">
+                                <div class="col-md-8">
                                     <input type="text" class="form-control" placeholder="Enter article title" ng-model="searchFilter">
                                 </div>
-
+                                <button class="btn btn-md btn-warning col-md-1" ng-click="clearInput()">
+                                    <i class="fa fa-eraser" aria-hidden="true"></i>
+                                </button>
                             </div>
                         </div>
 

@@ -27,8 +27,14 @@ angular.module('newsApp')
                     Authorization: 'Token ' + localStorage.getItem('token')
                 }
             }).success(function(){
+                if(zaznaczoneId!=""){
                 swal("Well done", "You have set your preferences", "success")
                 $location.path('/user/news');
+                }
+                else{
+                    swal("", "Please choose your category preferencess next time", "warning");
+                    $location.path('/user/news');
+                }
             });
  
         };

@@ -55,36 +55,39 @@ angular.module('newsApp')
 
 				
 		isSignedIn: function() {
-        	var promise = $q.defer();
-            if(this.role) promise.resolve();
-            else {
- 
-                if(!localStorage.getItem('token')) promise.reject();
- 
-                else {
-                var self = this;
-         
-                    $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me', {
-                        headers: {
-                            Authorization: 'Token ' + localStorage.getItem('token')
-                        }
-                    }).success(function(response) {
-                        if(response.success) {
-                            self.userData = response.user;
-                            promise.resolve(self.userData);
-                        }
-                        else {
-                            promise.reject();
-                        }
-                    }).error(function(err) {
-                        promise.reject(err);
-                    });
-                }
-            }
-         
-            return promise.promise;
-        }
+            var promise = $q.defer();
+    			/* Najpierw sprawdzasz, czy już jesteś zalogowany i masz dane użytkownika w pamięci */
+			    if(this.role) 
+			    	promise.resolve(); /* Jeśli tak, od razu kończysz oczekiwanie sukcesem */
+			    else {
+			        /* Jeśli nie masz danych, sprawdzasz czy jest token w pamięci */
+			        if(!localStorage.getItem('token')) 
+			        	promise.reject(); /* Jeśli nie ma, znaczy na 100% nie jesteś zalogowany */
+			        else {
+			            /* Jest token w pamięci */
+			            var self = this;
+			            /* Wykonujesz zapytanie do API metodą GET, która na postawie tokenu zwraca dane użytkownika */
+			            $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/', {
+			                headers: {
+			                    Authorization: 'Token ' + localStorage.getItem('token')
+			                }
+			            }).success(function(response) {
+			                /* Udało się, wypełniasz UserValid.userData danymi użytkownika i kończysz oczekiwanie */
+			                self.userData = response.user;
+			                promise.resolve(self.userData);
+			            }).error(function(err) {
+			                /* Coś poszło nie tak, może token wygasł? Albo niepoprawny? Kończysz kolejkę odrzuceniem */
+			                promise.reject(err);
+			            });
+			        }
+			    }
+			 
+			    return promise.promise;
+			}
 
 	}
 
 	}]);
+
+
+	
