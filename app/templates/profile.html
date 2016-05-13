@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="hello-panel">
+		<h2>Hello,</h2>
+		<p>Here u can set your profile</p>
+	</div>
+	<div class="col-md-12 change-panel">
+		<form class="col-md-6" name="changeEmail" ng-submit="sendEmail(user.email)"  novalidate>
+			<h3>Edit your email</h3>
+			<div class="input-group">
+	        <input 
+	            type="email"  
+	            name="email" 
+	            class="form-control" 
+	            ng-model="user.email"
+	            placeholder="Your last email" 
+	            required />
+	        </div>
+	        <div ng-messages="changeEmail.email.$error" ng-show="changeEmail.$submitted || changeEmail.email.$touched">
+	            <span ng-message="required" class="alert alert-danger">Email field can not be empty!</span>           
+	            <span ng-hide="changeEmail.email.$valid" class="alert alert-danger"> E-mail is not valid! </span>
+        	</div>
+		    <input type="submit" class="btn btn-primary" ng-disabled="!changeEmail.$valid" value="Change Email"/>
+		</form>
+
+		<form class="col-md-6" name="changePassword" novalidates>
+			<h3>Edit your password</h3>
+			<div class="input-group">
+			<input 
+	            type="password"
+	            name="password" 
+	            class="form-control" 
+	            ng-model="user.password" 
+	            required
+	            ng-pattern ="/^[a-zA-Z0-9]*$/"
+	            ng-minlength="8"
+	            ng-maxlength="20"
+	            placeholder="Your new password" />
+	        </div>
+	        <div ng-messages="changePassword.password.$error" ng-show="changePassword.$submitted || changePassword.password.$touched">
+	            <span ng-message="required" class="alert alert-danger">Password field can not be empty !</span>
+	            <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers ! </span>
+	            <span ng-message="maxlength" class="alert alert-danger">Password can not be longer than 20 characters!</span>
+	            <span ng-message="minlength" class="alert alert-danger">Password can not be shorter than 8 characters!</span>
+        	</div>
+	        <input type="submit" class="btn btn-primary" ng-disabled="!changePassword.$valid" value="Change Password"/>
+		</form>
+	</div>
+</div>	

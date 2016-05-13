@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newsApp')
-.controller('loginCtrl', ['$scope', '$location', 'ValidationService', 
+	.controller('loginCtrl', ['$scope', '$location', 'ValidationService', 
 	function($scope, $location, ValidationService){
 		$scope.signIn = function (login, password){
 			ValidationService.signIn(login,password)
