@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('newsApp')
-.controller('loginCtrl', ['$scope', '$location', 'UserValid', 
-	function($scope, $location, UserValid){
+.controller('loginCtrl', ['$scope', '$location', 'ValidationService', 
+	function($scope, $location, ValidationService){
 		$scope.signIn = function (login, password){
-			UserValid.signIn(login,password)
+			ValidationService.signIn(login,password)
 			.then(function(response){
 				//poprawna odpowiedz serwera
-				if(UserValid.userData.role==='admin')
+				if(ValidationService.userData.role==='admin')
 					$location.path('/admin/news');
 				else{
-					if(UserValid.userData.categories_set){
+					if(ValidationService.userData.categories_set){
 						$location.path('/user/news');
 					}
 					else{

@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('newsApp')
-    .controller('registerCtrl', ['$scope', '$location', 'UserValid', function($scope,$location,UserValid){
+    .controller('registerCtrl', ['$scope', '$location', 'ValidationService', function($scope, $location, ValidationService){
         $scope.signUp = function(login, email, password, passwordRepeat){
-            UserValid.signUp(login, email, password, passwordRepeat)
+            ValidationService.signUp(login, email, password, passwordRepeat)
                 .then(function(response){
                     //poprawna odpowiedz serwera
                     $location.path('/login');

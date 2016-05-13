@@ -70,9 +70,9 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 
 		$urlRouterProvider.otherwise('/login');
 	})
-	.run(['$rootScope', 'UserValid', '$http', '$location', 
-		function($rootScope, UserValid, $http, $location){	
-			UserValid.isSignedIn().then(function(userData) {
+	.run(['$rootScope', 'ValidationService', '$http', '$location', 
+		function($rootScope, ValidationService, $http, $location){	
+			ValidationService.isSignedIn().then(function(userData) {
 	    		$location.path('/' + userData.role);
 			}, 
 			function(){

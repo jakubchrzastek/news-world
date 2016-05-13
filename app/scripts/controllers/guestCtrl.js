@@ -5,7 +5,7 @@ angular.module('newsApp')
 		$scope.guestMenu = [
 			{
 				icon: 'fa fa-newspaper-o',
-				state: 'guest.lastNews',
+				state: 'guest.news',
 				text: 'Last News'
 			},
 			

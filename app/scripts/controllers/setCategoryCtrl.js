@@ -2,7 +2,8 @@
 'use strict'
  
 angular.module('newsApp')
-    .controller('setCategoryCtrl' , [ '$scope' , '$location', '$http', 'UserValid', function($scope, $location, $http, UserValid){
+    .controller('setCategoryCtrl' , [ '$scope' , '$location', '$http', 'ValidationService', 
+        function($scope, $location, $http, ValidationService){
         $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/', {
             headers: {
                 Authorization: 'Token ' + localStorage.getItem('token')

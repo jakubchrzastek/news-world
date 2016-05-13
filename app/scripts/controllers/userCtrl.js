@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('newsApp')
-	.controller('userCtrl', [ '$scope', '$location', 'UserValid', 
-		function($scope, $location, UserValid){
+	.controller('userCtrl', [ '$scope', '$location', 'ValidationService', 
+		function($scope, $location, ValidationService){
 
-		if(UserValid.userData.role!=='user')
+		if(ValidationService.userData.role!=='user')
 			$location.path('/login');
 
 		$scope.userMenu = [
@@ -18,6 +18,12 @@ angular.module('newsApp')
 				icon: 'fa fa-newspaper-o',
 				state: 'user.news',
 				text: 'General News'
+			},
+
+			{
+				icon: 'fa fa-user',
+				state: 'user.profile',
+				text: 'My profile'
 			},
 			
 			{	

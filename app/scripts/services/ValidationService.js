@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newsApp')
-	.service('UserValid', ['$q', '$http', function($q, $http){
+	.service('ValidationService', ['$q', '$http', function($q, $http){
 
 	return{
 
@@ -56,27 +56,26 @@ angular.module('newsApp')
 				
 		isSignedIn: function() {
             var promise = $q.defer();
-    			/* Najpierw sprawdzasz, czy już jesteś zalogowany i masz dane użytkownika w pamięci */
+    			// Sprawdza, czy zalogowany i czy ma dane użytkownika w pamięci
 			    if(this.role) 
-			    	promise.resolve(); /* Jeśli tak, od razu kończysz oczekiwanie sukcesem */
+			    	promise.resolve(); // Jeśli tak, od razu kończy oczekiwanie sukcesem
 			    else {
-			        /* Jeśli nie masz danych, sprawdzasz czy jest token w pamięci */
-			        if(!localStorage.getItem('token')) 
-			        	promise.reject(); /* Jeśli nie ma, znaczy na 100% nie jesteś zalogowany */
+			        // Jeśli nie ma danych, sprawdza czy jest token w pamięci
+			        if(!localStorage.getItem('token')=='') 
+			        	promise.reject(); // Jeśli nie ma, znaczy na 100% nie jest zalogowany
 			        else {
-			            /* Jest token w pamięci */
+			            // Jest token w pamięci
 			            var self = this;
-			            /* Wykonujesz zapytanie do API metodą GET, która na postawie tokenu zwraca dane użytkownika */
+			            // Wykonuje zapytanie do API, która na postawie tokenu zwraca dane użytkownika
 			            $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/', {
 			                headers: {
 			                    Authorization: 'Token ' + localStorage.getItem('token')
 			                }
 			            }).success(function(response) {
-			                /* Udało się, wypełniasz UserValid.userData danymi użytkownika i kończysz oczekiwanie */
+			                // Wypełnia ValidationService.userData danymi użytkownika i kończy oczekiwanie 
 			                self.userData = response.user;
 			                promise.resolve(self.userData);
 			            }).error(function(err) {
-			                /* Coś poszło nie tak, może token wygasł? Albo niepoprawny? Kończysz kolejkę odrzuceniem */
 			                promise.reject(err);
 			            });
 			        }
