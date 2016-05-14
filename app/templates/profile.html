@@ -4,7 +4,7 @@
 		<p>Here u can set your profile</p>
 	</div>
 	<div class="col-md-12 change-panel">
-		<form class="col-md-6" name="changeEmail" ng-submit="sendEmail(user.email)"  novalidate>
+		<form class="col-md-6" name="changeEmail" ng-submit="editEmail(user.email)"  novalidate>
 			<h3>Edit your email</h3>
 			<div class="input-group">
 	        <input 
@@ -22,26 +22,63 @@
 		    <input type="submit" class="btn btn-primary" ng-disabled="!changeEmail.$valid" value="Change Email"/>
 		</form>
 
-		<form class="col-md-6" name="changePassword" novalidates>
+		<form class="col-md-6" name="changePassword" ng-submit="editPassword(user.password, new.password, new.passwordRepeat)" novalidates>
 			<h3>Edit your password</h3>
 			<div class="input-group">
-			<input 
-	            type="password"
-	            name="password" 
-	            class="form-control" 
-	            ng-model="user.password" 
-	            required
-	            ng-pattern ="/^[a-zA-Z0-9]*$/"
-	            ng-minlength="8"
-	            ng-maxlength="20"
-	            placeholder="Your new password" />
-	        </div>
-	        <div ng-messages="changePassword.password.$error" ng-show="changePassword.$submitted || changePassword.password.$touched">
-	            <span ng-message="required" class="alert alert-danger">Password field can not be empty !</span>
-	            <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers ! </span>
-	            <span ng-message="maxlength" class="alert alert-danger">Password can not be longer than 20 characters!</span>
-	            <span ng-message="minlength" class="alert alert-danger">Password can not be shorter than 8 characters!</span>
-        	</div>
+            <input 
+                type="password"
+                id="password" 
+                name="password" 
+                class="form-control" 
+                placeholder="Old Password"
+                ng-model="user.password" 
+                required
+                ng-pattern ="/^[a-żA-Ż0-9]*$/"
+                ng-minlength="8"
+            ng-maxlength="20"/>
+        </div>
+        <div ng-messages="changePassword.password.$error" ng-show="changePassword.$submitted || changePassword.password.$touched">
+
+            <span ng-message="required" class="alert alert-danger">Password field is required !</span>
+            <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers ! </span>
+            <span ng-message="maxlength" class="alert alert-danger">Password can not be longer than 20 characters!</span>
+            <span ng-message="minlength" class="alert alert-danger">Password can not be shorter than 8 characters!</span>
+        </div>
+		<div class="input-group">
+            <input 
+                type="password"
+                id="newpassword" 
+                name="newpassword" 
+                class="form-control" 
+                placeholder="New Password"
+                ng-model="new.password" 
+                required
+                ng-pattern ="/^[a-żA-Ż0-9]*$/"
+                ng-minlength="8"
+            ng-maxlength="20"/>
+        </div>
+        <div ng-messages="changePassword.newpassword.$error" ng-show="changePassword.$submitted || changePassword.newpassword.$touched">
+
+            <span ng-message="required" class="alert alert-danger">Password field is required !</span>
+            <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers ! </span>
+            <span ng-message="maxlength" class="alert alert-danger">Password can not be longer than 20 characters!</span>
+            <span ng-message="minlength" class="alert alert-danger">Password can not be shorter than 8 characters!</span>
+        </div>
+        <div class="input-group">
+            <input 
+                type="password" 
+                id="passwordRepeat"
+                name="passwordRepeat" 
+                class="form-control" 
+                placeholder=" New Password Repeat" 
+                ng-model="new.passwordRepeat"
+                required
+                pw-check="newpassword"/>
+        </div>
+        <div ng-messages="changePassword.passwordRepeat.$error" ng-show="changePassword.$submitted || changePassword.passwordRepeat.$touched">
+            <span ng-message="required" class="alert alert-danger">Repeat Password field is required!</span>
+            <span ng-message="pwmatch" class="alert alert-danger">Passwords must be the same!</span>  
+        </div>
 	        <input type="submit" class="btn btn-primary" ng-disabled="!changePassword.$valid" value="Change Password"/>
 		</form>
 	</div>
