@@ -10,6 +10,10 @@ angular.module('newsApp')
             }).success(function(response){
                 $scope.ManageUsers = response.users;
             });
+
+        $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/').success(function(response){
+            $scope.Categories = response.categories;
+        });
     	
         $scope.clearInput = function (){
             $scope.searchFilter = "";

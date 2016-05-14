@@ -8,16 +8,15 @@
 			<span class="news-date"> {{ article.publish_date }} </span>
 			<button 
 				class="btn btn-success btn-sm" 
-				ng-disabled="article.user_voted" 
-				ng-click="like()">
+				ng-click="like()"
+				ng-disabled="article.voted">
 				<span class="glyphicon glyphicon-thumbs-up"></span> Like
 			</button>
 
 			<button
 				class="btn btn-danger btn-sm" 
-				ng-disabled="article.user_voted" 
-				ng-click="dislike()">
-
+				ng-click="dislike()"
+				ng-disabled="!article.voted">
 				<span class="glyphicon glyphicon-thumbs-down"></span> Dislike
 			</button>
 			<h2 class="news-title"> {{ article.title }} </h2>

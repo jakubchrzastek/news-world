@@ -24,8 +24,9 @@
                                 <label class="col-md-3 control-label required">Category</label>
 
                                 <div class="col-md-9">
-                                    <select class="form-control" >
-                                        <option value=""></option>
+                                    <select class="form-control" ng-model="categoryFilter">
+                                        <option></option>
+                                        <option ng-repeat="category in Categories">{{ category.name }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -37,7 +38,7 @@
 </div>
 
 <div class="block">
-    <div class="table-responsive">
+    <div class="table-responsive" ng-init="limit=5">
         <table class="table table-striped">
              <thead>
                   <tr>
@@ -48,7 +49,7 @@
                   </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="article in ManageArticles | filter : searchFilter">
+                <tr ng-repeat="article in ManageArticles | filter : searchFilter | filter : categoryFilter | limitTo: limit as results">
                     <td> {{ article.title }} </td>
                     <td> {{ article.description }} </td>
                     <td> {{ article.source }} </td>
@@ -57,6 +58,11 @@
             </tbody>
         </table>
     </div> 
+    <button 
+    class="show-more btn btn-danger center-block" 
+    ng-hide="results.length===ManageArticles.length" 
+    ng-click="limit=limit+5"> Show more 
+    </button>
 </div>  
 
 </div> 

@@ -6,6 +6,10 @@ angular.module('newsApp')
             $scope.ManageArticles = response.news;
         });
 
+        $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/').success(function(response){
+            $scope.Categories = response.categories;
+        });
+
         $scope.clearInput = function (){
             $scope.searchFilter = "";
         }

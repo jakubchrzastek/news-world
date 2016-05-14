@@ -220,6 +220,9 @@ main {
   padding: 10px;
   min-width: 100%; }
 
+.show-more {
+  margin-bottom: 20px; }
+
 .search-panel {
   padding: 20px;
   background: #ffffff;
