@@ -13,7 +13,7 @@ angular.module('newsApp')
 
 		$scope.like = function(){
 			if(!$scope.article.user_voted){
-				$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/vote', 
+				$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/votes', 
 					{
 						vote : { value: true}
 					},
@@ -48,7 +48,7 @@ angular.module('newsApp')
 
 		$scope.dislike = function(){
 			if($scope.article.user_voted){
-				$http.put('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/vote', 
+				$http.put('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/votes', 
 				{
 				vote : { value: false}
 				},

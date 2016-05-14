@@ -52,6 +52,16 @@ angular.module('newsApp', ['ui.router', 'ngMessages'])
 				templateUrl: 'templates/news.html',
 				controller: 'newsCtrl'
 			})
+			.state('user.mynews', {
+				url: '/mynews',
+				templateUrl: 'templates/mynews.html',
+				controller: 'myNewsCtrl'
+			})
+			.state('user.topnews', {
+				url: '/topnews',
+				templateUrl: 'templates/topnews.html',
+				controller: 'topNewsCtrl'
+			})
 			.state('user.profile', {
 				url: '/profile',
 				templateUrl: 'templates/profile.html',

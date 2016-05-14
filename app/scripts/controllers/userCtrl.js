@@ -9,8 +9,14 @@ angular.module('newsApp')
 
 		$scope.userMenu = [
 			{
-				icon: 'fa fa-user-secret',
-				state: 'user.news',
+				icon: 'fa fa-trophy',
+				state: 'user.topnews',
+				text: 'Top10 News'
+			},
+
+			{
+				icon: 'fa fa-heart-o',
+				state: 'user.mynews',
 				text: 'My News'
 			},
 

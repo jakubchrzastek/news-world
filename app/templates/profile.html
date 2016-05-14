@@ -21,7 +21,6 @@
         	</div>
 		    <input type="submit" class="btn btn-primary" ng-disabled="!changeEmail.$valid" value="Change Email"/>
 		</form>
-
 		<form class="col-md-6" name="changePassword" ng-submit="editPassword(user.password, new.password, new.passwordRepeat)" novalidates>
 			<h3>Edit your password</h3>
 			<div class="input-group">
@@ -35,10 +34,9 @@
                 required
                 ng-pattern ="/^[a-żA-Ż0-9]*$/"
                 ng-minlength="8"
-            ng-maxlength="20"/>
+            	ng-maxlength="20"/>
         </div>
         <div ng-messages="changePassword.password.$error" ng-show="changePassword.$submitted || changePassword.password.$touched">
-
             <span ng-message="required" class="alert alert-danger">Password field is required !</span>
             <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers ! </span>
             <span ng-message="maxlength" class="alert alert-danger">Password can not be longer than 20 characters!</span>
@@ -55,7 +53,7 @@
                 required
                 ng-pattern ="/^[a-żA-Ż0-9]*$/"
                 ng-minlength="8"
-            ng-maxlength="20"/>
+            	ng-maxlength="20"/>
         </div>
         <div ng-messages="changePassword.newpassword.$error" ng-show="changePassword.$submitted || changePassword.newpassword.$touched">
 

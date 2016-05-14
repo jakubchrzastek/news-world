@@ -75,14 +75,14 @@ angular.module('newsApp')
 			                // Wypełnia ValidationService.userData danymi użytkownika i kończy oczekiwanie 
 			                self.userData = response.user;
 			                promise.resolve(self.userData);
-			            }).error(function(err) {
-			                promise.reject(err);
+			            }).error(function(response) {
+			                promise.reject(response);
 			            });
 			        }
 			    }
 			 
-			    return promise.promise;
-			}
+			return promise.promise;
+		}
 
 	}
 

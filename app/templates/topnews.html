@@ -22,7 +22,7 @@
                   <div class="col-md-9">
                     <select class="form-control" ng-model="categoryFilter">
                       <option></option>
-                      <option ng-repeat="category in Categories">{{ category.name }}</option>
+                      <option ng-repeat="category in topCategories">{{ category.name }}</option>
                     </select>
                   </div>
               </div>
@@ -31,7 +31,7 @@
         </div>
     </div> 
   </div>
-  <article class="message-panel container-fluid" ng-repeat="news in News | filter : searchFilter | filter: categoryFilter">
+  <article class="message-panel container-fluid" ng-repeat="news in topNews | filter : searchFilter | filter: categoryFilter">
     <span class="news-date"> {{ news.publish_date }} </span>
     <h5 id="news-title"> {{ news.title }} </h5>
     <hr/>
