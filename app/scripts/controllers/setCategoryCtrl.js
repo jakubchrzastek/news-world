@@ -3,11 +3,7 @@
 angular.module('newsApp')
     .controller('setCategoryCtrl' , [ '$scope' , '$location', '$http', 'ValidationService', 
         function($scope, $location, $http, ValidationService){
-        $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/', {
-            headers: {
-                Authorization: 'Token ' + localStorage.getItem('token')
-            }
-        }).success(function(response){
+        $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/').then(function(response){
             $scope.Categories = response.categories;
             $scope.model = (new Array($scope.Categories.length)).fill(false);
         });
@@ -22,13 +18,9 @@ angular.module('newsApp')
                 user: {
                     category_ids: zaznaczoneId
                 }
-            }, {
-                headers: {
-                    Authorization: 'Token ' + localStorage.getItem('token')
-                }
-            }).success(function(){
+            }).then(function(){
                 if(zaznaczoneId!=""){
-                swal("Well done", "You have set your preferences", "success")
+                    swal("Well done", "You have set your preferences", "success")
                 $location.path('/user/news');
                 }
                 else{

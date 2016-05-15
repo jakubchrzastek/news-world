@@ -3,12 +3,7 @@
 angular.module('newsApp')
 	.controller('fullArticleCtrl', ['$scope', '$http', '$stateParams', function ($scope, $http, $stateParams) {
 
-		$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId,
-			{
-				headers: {
-					Authorization: 'Token ' + localStorage.getItem('token')
-				}
-			}).then(function(response){
+		$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId).then(function(response){
 			$scope.article = response.data.news;			
 		});
 
@@ -19,38 +14,27 @@ angular.module('newsApp')
 		$scope.like = function(){
 			if($scope.article.voted==null){
 				$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/votes', 
-					{
-						vote: { 
-							value: true
-						}
-					},
-					{
-						headers: {
-							Authorization: 'Token ' + localStorage.getItem('token')
-						}
-				}).success(function(response){
+				{
+					vote: { 
+						value: true
+					}
+				}).then(function(response){
 					swal({ title: "You like this!", timer: 1500,type: "success", showConfirmButton: false});
-					console.log("wyslano po raz 1 - like");
-					$scope.article.voted = true;
-				}).error(function(){
-					console.log("niewyslano po raz 1 - like");
+				$scope.article.voted = true;
+				}).catch(function(){
+
 				});
 			} else if($scope.article.voted==false) {
 				$http.put('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/votes', 
-					{
-						vote: { 
-							value: true
-						}
-					},
-					{
-						headers: {
-							Authorization: 'Token ' + localStorage.getItem('token')
-						}
-				}).success(function(){
+				{
+					vote: { 
+						value: true
+					}
+				}).then(function(){
 					swal({ title: "You like this!", timer: 1500,type: "success", showConfirmButton: false});
-					$scope.article.voted = true;
-				}).error(function(){
-					console.log("");
+				$scope.article.voted = true;
+				}).catch(function(){
+
 				});
 			}
 			else{
@@ -61,40 +45,28 @@ angular.module('newsApp')
 		$scope.dislike = function(){
 			if($scope.article.voted==null){
 				$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/votes', 
-					{
-						vote: { 
-							value: false
-						}
-					},
-					{
-						headers: {
-							Authorization: 'Token ' + localStorage.getItem('token')
-						}
-				}).success(function(){
+				{
+					vote: { 
+						value: false
+					}
+				}).then(function(){
 					swal({ title: "You dislike this!", timer: 1500,type: "error", showConfirmButton: false});
-					console.log("wyslano po raz 1 - dislike");
 					$scope.article.voted = false;
-
-				}).error(function(){
+					console.log("wyslano po raz 1 - dislike");
+				}).catch(function(){
 					console.log("niewyslano po raz 1 - dislike");
 				});
 			} else if($scope.article.voted==true) {
 				$http.put('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/votes', 
-					{
-						vote: { 
-							value: false
-						}
-					},
-					{
-						headers: {
-							Authorization: 'Token ' + localStorage.getItem('token')
-						}
-				}).success(function(){
+				{
+					vote: { 
+						value: false
+					}
+				}).then(function(){
 					swal({ title: "You dislike this!", timer: 1500,type: "error", showConfirmButton: false});
-					$scope.article.voted = false;
-					
-				}).error(function(){
-					console.log("");
+				$scope.article.voted = false;
+				}).catch(function(){
+
 				});
 			}
 			else{

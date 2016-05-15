@@ -27,11 +27,7 @@ angular.module('newsApp')
                for(var i = 0; i < $scope.ManageArticles.length; i++) {
                     if($scope.ManageArticles[i].id == articleId){
                         var index = i;
-                        $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + articleId ,{
-                            headers: {
-                                Authorization: 'Token ' + localStorage.getItem('token')
-                            }
-                        }).success(function(){
+                        $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + articleId).then(function(){
                             $scope.ManageArticles.splice(index ,1);
                             swal("Deleted!", "Article has been removed", "success");         
                         }); 

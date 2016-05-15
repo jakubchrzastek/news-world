@@ -55,14 +55,12 @@
       margin-right: 7px; }
     #sidebar .sidebar-navigation ul li a span {
       display: inline-block; }
-  #sidebar .sidebar-navigation > ul > li:active > a, #sidebar .sidebar-navigation > ul > li:visited > a {
-    background-color: rgba(0, 0, 0, 0.4); }
-  #sidebar .sidebar-navigation > ul > li:active.parent > a, #sidebar .sidebar-navigation > ul > li:visited.parent > a {
-    border-left: 0; }
-  #sidebar .sidebar-navigation > ul > li a:hover {
+  #sidebar .sidebar-navigation > ul > li > a:hover, #sidebar .sidebar-navigation > ul > li:active, #sidebar .sidebar-navigation > ul > li:visited {
     background-color: rgba(0, 0, 0, 0.4);
     text-decoration: none;
     color: #FFF; }
+  #sidebar .sidebar-navigation > ul > li.parent > a {
+    border-left: 0; }
   #sidebar .sidebar-copyrights {
     position: absolute;
     text-align: center;

@@ -62,15 +62,13 @@
       span
         display: inline-block
     > ul > li
-      &:active , &:visited
-        > a
-          background-color: rgba(0, 0, 0, 0.4)
-        &.parent > a
-          border-left: 0
-      a:hover
+      > a:hover, &:active, &:visited
         background-color: rgba(0, 0, 0, 0.4)
         text-decoration: none
         color: #FFF
+      &.parent > a
+        border-left: 0
+      
 
   .sidebar-copyrights
     position: absolute

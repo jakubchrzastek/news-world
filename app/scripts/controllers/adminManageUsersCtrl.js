@@ -2,12 +2,7 @@
 
 angular.module('newsApp')
 	.controller('adminManageUsersCtrl', ['$scope', '$http', function ($scope, $http) {
-    	$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/',
-            {
-                    headers: {
-                        Authorization: 'Token ' + localStorage.getItem('token')
-                    }
-            }).success(function(response){
+    	$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/').success(function(response){
                 $scope.ManageUsers = response.users;
             });
 
@@ -32,11 +27,7 @@ angular.module('newsApp')
                 for(var i = 0; i < $scope.ManageUsers.length; i++) {
                     if($scope.ManageUsers[i].id == userId){
                         var index = i;  
-                        $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/users/' + userId ,{
-                            headers: {
-                                Authorization: 'Token ' + localStorage.getItem('token')
-                            }
-                        }).success(function(){
+                        $http.delete('http://news-world.iiar.pwr.edu.pl/api/v1/users/' + userId).then(function(){
                             $scope.ManageUsers.splice(index ,1);
                             swal("Deleted!", "User has been removed", "success");         
                         }); 
