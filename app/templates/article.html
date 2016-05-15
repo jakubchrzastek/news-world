@@ -9,14 +9,14 @@
 			<button 
 				class="btn btn-success btn-sm" 
 				ng-click="like()"
-				ng-disabled="article.voted">
+				ng-disabled="article.voted==true">
 				<span class="glyphicon glyphicon-thumbs-up"></span> Like
 			</button>
 
 			<button
 				class="btn btn-danger btn-sm" 
 				ng-click="dislike()"
-				ng-disabled="!article.voted">
+				ng-disabled="article.voted==false">
 				<span class="glyphicon glyphicon-thumbs-down"></span> Dislike
 			</button>
 			<h2 class="news-title"> {{ article.title }} </h2>

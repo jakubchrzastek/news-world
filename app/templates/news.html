@@ -43,7 +43,7 @@
   </span>
   <button 
     class="show-more btn btn-danger center-block" 
-    ng-hide="results.length===News.length" 
+    ng-hide="results.length===News.length || results.length===0" 
     ng-click="limit=limit+5"> Show more 
   </button>
 </div>

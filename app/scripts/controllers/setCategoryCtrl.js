@@ -1,5 +1,4 @@
-
-'use strict'
+'use strict';
  
 angular.module('newsApp')
     .controller('setCategoryCtrl' , [ '$scope' , '$location', '$http', 'ValidationService', 

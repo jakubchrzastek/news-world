@@ -61,4 +61,8 @@ angular.module('newsApp')
 				swal("Error!", "You choose the same password!" , "error");
 			};
 		};
+
+		$scope.editCategory = function(){
+
+		};
 	}]);

@@ -14,14 +14,14 @@
                 ng-model="user.login"
                 required
                 ng-pattern ="/^[a-zA-Z0-9]*$/"
-                ng-minlength="5"
+                ng-minlength="6"
                 ng-maxlength="20" />
         </div>
         <div ng-messages="loginForm.login.$error" ng-show="loginForm.$submitted || loginForm.login.$touched">
             <span ng-message="required" class="alert alert-danger">Login field is required!</span>
             <span ng-message="pattern" class="alert alert-danger">The field can only contain letters and numbers!</span>
             <span ng-message="maxlength" class="alert alert-danger">Login can not be longer than 20 characters!</span>
-            <span ng-message="minlength" class="alert alert-danger">Login can not be shorter than 5 characters!</span>
+            <span ng-message="minlength" class="alert alert-danger">Login can not be shorter than 6 characters!</span>
         </div>
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1"> <i class="fa fa-lock"></i> </span>
