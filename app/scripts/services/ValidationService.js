@@ -11,7 +11,7 @@ angular.module('newsApp')
 		signIn: function(login,password){
 			var promise = $q.defer(); //nowy promise
 			var self = this;
-			$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/users/sign_in', {		
+			$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/users/sign_in/', {		
 				user: {
 					login: login,
 					password: password
@@ -20,7 +20,7 @@ angular.module('newsApp')
 				promise.reject(response); // sprawia ze promise przestaje oczekiwać
 			}).success(function(response, headers){
 				self.userData = response.user; // do userdata przypisujemy token/role/categoryset
-				localStorage.setItem('token', response.user.session.token);
+				sessionStorage.setItem('token', response.user.session.token);
 				promise.resolve(response);
 			});
 
@@ -30,7 +30,7 @@ angular.module('newsApp')
 		signUp: function(login, email, password, passwordRepeat){
 			var promise = $q.defer();
 			var self = this;
-			$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/users/sign_up', {		
+			$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/users/sign_up/', {		
 				user: {
 					login: login,
 					email: email,
@@ -46,7 +46,7 @@ angular.module('newsApp')
                         swal("Some Error!", "You need fix your mistake", "error");
                     	promise.reject(response);
                     }
-			}).error(function(){
+			}).error(function(response){
 				promise.reject(response);
 			});
 
@@ -61,7 +61,7 @@ angular.module('newsApp')
 			    	promise.resolve(); // Jeśli tak, od razu kończy oczekiwanie sukcesem
 			    else {
 			        // Jeśli nie ma danych, sprawdza czy jest token w pamięci
-			        if(!localStorage.getItem('token')=='') 
+			        if(!sessionStorage.getItem('token')=='') 
 			        	promise.reject(); // Jeśli nie ma, znaczy na 100% nie jest zalogowany
 			        else {
 			            // Jest token w pamięci
@@ -69,7 +69,7 @@ angular.module('newsApp')
 			            // Wykonuje zapytanie do API, która na postawie tokenu zwraca dane użytkownika
 			            $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/', {
 			                headers: {
-			                    Authorization: 'Token ' + localStorage.getItem('token')
+			                    Authorization: 'Token ' + sessionStorage.getItem('token')
 			                }
 			            }).success(function(response) {
 			                // Wypełnia ValidationService.userData danymi użytkownika i kończy oczekiwanie 

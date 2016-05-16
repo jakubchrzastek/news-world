@@ -7,7 +7,7 @@ angular.module('newsApp')
 
 		$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/').success(function(response){
 			$scope.userData = response.users;
-			localStorage.setItem('email', response.user.email);
+			sessionStorage.setItem('email', response.user.email);
 		});
 
 		$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/').success(function(response){
@@ -16,7 +16,7 @@ angular.module('newsApp')
         });
 
 		$scope.editEmail = function(new_email){
-			if(localStorage.getItem('email')!==new_email){
+			if(sessionStorage.getItem('email')!==new_email){
 				$http.put('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/',
 				{
 		    		user: {
@@ -45,7 +45,7 @@ angular.module('newsApp')
 					},
 					{
 						headers: {
-							Authorization: 'Token ' + localStorage.getItem('token')
+							Authorization: 'Token ' + sessionStorage.getItem('token')
 						}
 				}).success(function(){
 					swal("Success!", "You successfull change your password", "success");
@@ -70,7 +70,7 @@ angular.module('newsApp')
                 }
             }, {
                 headers: {
-                    Authorization: 'Token ' + localStorage.getItem('token')
+                    Authorization: 'Token ' + sessionStorage.getItem('token')
                 }
             }).success(function(){
                 if(zaznaczoneId!=""){

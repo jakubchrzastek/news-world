@@ -12,7 +12,7 @@ angular.module('newsApp')
 			{	
 				icon: 'fa fa-times-circle',
 				state: 'logout',
-				text: 'Logout'
+				text: 'Login Page'
 			}
 		];
 	}]);

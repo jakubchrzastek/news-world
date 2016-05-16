@@ -3,7 +3,8 @@
 angular.module('newsApp')
     .controller('setCategoryCtrl' , [ '$scope' , '$location', '$http', 'ValidationService', 
         function($scope, $location, $http, ValidationService){
-        $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/').then(function(response){
+            
+        $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/').success(function(response){
             $scope.Categories = response.categories;
             $scope.model = (new Array($scope.Categories.length)).fill(false);
         });
