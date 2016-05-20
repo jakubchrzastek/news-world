@@ -67,11 +67,7 @@ angular.module('newsApp')
 			            // Jest token w pamięci
 			            var self = this;
 			            // Wykonuje zapytanie do API, która na postawie tokenu zwraca dane użytkownika
-			            $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/', {
-			                headers: {
-			                    Authorization: 'Token ' + sessionStorage.getItem('token')
-			                }
-			            }).success(function(response) {
+			            $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/').success(function(response) {
 			                // Wypełnia ValidationService.userData danymi użytkownika i kończy oczekiwanie 
 			                self.userData = response.user;
 			                promise.resolve(self.userData);

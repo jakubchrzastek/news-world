@@ -12,7 +12,6 @@ gulp.task("sass", function () {
     .pipe(gulp.dest("./app/css/"));
 });
 
-
 gulp.task("connect", function() {
   connect.server({
     root: "app",
