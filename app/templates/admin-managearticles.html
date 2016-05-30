@@ -36,13 +36,13 @@
     <div class="block">
         <div class="table-responsive" ng-init="limit=5">
             <table class="table table-striped">
-                 <thead>
-                      <tr>
-                         <th> Article Title </th>
-                         <th> Article Content </th>
-                         <th> Source </th>
-                         <th> Action </th>
-                      </tr>
+                <thead>
+                    <tr>
+                        <th> Article Title </th>
+                        <th> Article Content </th>
+                        <th> Source </th>
+                        <th> Action </th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="article in ManageArticles | filter : searchFilter | filter : categoryFilter | limitTo: limit as results">

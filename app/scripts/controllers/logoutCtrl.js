@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newsApp')
-	.controller('logoutCtrl', ['$scope','$location', function($scope, $location){
-		$location.path('/login');
+	.controller('logoutCtrl', ['$scope','$state', function($scope, $state){
+		$state.go('login');
 		sessionStorage.clear();
 	}]);

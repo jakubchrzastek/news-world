@@ -7,9 +7,7 @@ angular.module('newsApp')
 				icon: 'fa fa-newspaper-o',
 				state: 'guest.news',
 				text: 'Last News'
-			},
-			
-			{	
+			}, {	
 				icon: 'fa fa-times-circle',
 				state: 'logout',
 				text: 'Login Page'

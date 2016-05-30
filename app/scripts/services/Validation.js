@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newsApp')
-	.service('ValidationService', ['$q', '$http', function($q, $http){
+	.service('ValidationService', ['$q', '$http', 'baseUrl', function($q, $http, baseUrl){
 
 	return{
 
@@ -11,7 +11,7 @@ angular.module('newsApp')
 		signIn: function(login,password){
 			var promise = $q.defer(); //nowy promise
 			var self = this;
-			$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/users/sign_in/', {		
+			$http.post(baseUrl + '/api/v1/users/sign_in/', {		
 				user: {
 					login: login,
 					password: password
@@ -30,7 +30,7 @@ angular.module('newsApp')
 		signUp: function(login, email, password, passwordRepeat){
 			var promise = $q.defer();
 			var self = this;
-			$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/users/sign_up/', {		
+			$http.post(baseUrl + '/api/v1/users/sign_up/', {		
 				user: {
 					login: login,
 					email: email,
@@ -67,7 +67,7 @@ angular.module('newsApp')
 			            // Jest token w pamięci
 			            var self = this;
 			            // Wykonuje zapytanie do API, która na postawie tokenu zwraca dane użytkownika
-			            $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/').success(function(response) {
+			            $http.get(baseUrl + '/api/v1/users/me/').success(function(response) {
 			                // Wypełnia ValidationService.userData danymi użytkownika i kończy oczekiwanie 
 			                self.userData = response.user;
 			                promise.resolve(self.userData);

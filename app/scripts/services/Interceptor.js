@@ -1,6 +1,5 @@
 'use strict';
 
-
 angular.module('newsApp')
 	.factory('httpRequestInterceptor',['$rootScope', function($rootScope){
 		return {
@@ -14,4 +13,5 @@ angular.module('newsApp')
 	}])
 	.config(['$httpProvider', function($httpProvider) {
     	$httpProvider.interceptors.push('httpRequestInterceptor');
-	}]);
+	}])
+	.constant('baseUrl', 'http://news-world.iiar.pwr.wroc.pl');

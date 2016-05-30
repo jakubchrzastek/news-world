@@ -5,8 +5,8 @@
             <hr/>
             <div class="form-horizontal">
                 <div class="row">
-                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label class="col-md-3 control-label required">Find Article</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" placeholder="Enter article title" ng-model="searchFilter">
@@ -27,7 +27,6 @@
             </div>
         </div>
     </div>
-
     <div class="block">
         <div class="table-responsive">
             <table class="table table-striped">
@@ -48,8 +47,9 @@
                         <td> {{ article.content }} </td>
                         <td> {{ article.author }} </td>
                         <td> {{ article.source }} </td>
-                        <td> <button class="btn btn-xs btn-success"><i class="fa fa-thumbs-up"></i></button> 
-                        <button class="btn btn-xs btn-danger"><i class="fa fa-thumbs-down"></i></button>
+                        <td> 
+                            <button class="btn btn-xs btn-success"><i class="fa fa-thumbs-up"></i></button> 
+                            <button class="btn btn-xs btn-danger"><i class="fa fa-thumbs-down"></i></button>
                         </td>
                     </tr>
                 </tbody>

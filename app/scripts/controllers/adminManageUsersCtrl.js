@@ -1,18 +1,18 @@
 'use strict';
 
 angular.module('newsApp')
-	.controller('adminManageUsersCtrl', ['$scope', '$http', function ($scope, $http) {
-    	$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/').success(function(response){
+	.controller('adminManageUsersCtrl', ['$scope', '$http', 'baseUrl',function ($scope, $http, baseUrl) {
+    	$http.get(baseUrl + '/api/v1/users/').success(function(response){
                 $scope.ManageUsers = response.users;
             });
 
-        $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/').success(function(response){
+        $http.get(baseUrl + '/api/v1/categories/').success(function(response){
             $scope.Categories = response.categories;
         });
     	
         $scope.clearInput = function (){
             $scope.searchFilter = "";
-        }
+        };
 
         $scope.deleteUsers = function (userId) { 
             swal({   

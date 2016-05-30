@@ -1,24 +1,22 @@
 'use strict';
 
 angular.module('newsApp')
-	.controller('profileCtrl', ['$http', '$scope', function($http, $scope){
-		
+	.controller('profileCtrl', ['$http', '$scope', 'baseUrl', function($http, $scope, baseUrl){
 		$scope.model = [];
 
-		$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/').success(function(response){
+		$http.get(baseUrl + '/api/v1/users/me/').success(function(response){
 			$scope.userData = response.users;
 			sessionStorage.setItem('email', response.user.email);
 		});
 
-		$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/').success(function(response){
+		$http.get(baseUrl + '/api/v1/categories/').success(function(response){
             $scope.Categories = response.categories;
             $scope.model = (new Array($scope.Categories.length)).fill(false);
         });
 
 		$scope.editEmail = function(new_email){
 			if(sessionStorage.getItem('email')!==new_email){
-				$http.put('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/',
-				{
+				$http.put(baseUrl + '/api/v1/users/me/',{
 		    		user: {
 				        email: new_email
 				    }
@@ -36,8 +34,7 @@ angular.module('newsApp')
 
 		$scope.editPassword = function(current, new_password, new_passwordRepeat){
 			if(current!==new_password){
-				$http.post('http://news-world.iiar.pwr.wroc.pl/api/v1/users/me/password/',
-					{
+				$http.post(baseUrl + '/api/v1/users/me/password/',{
 						user: {
 							original_password: current,
 							new_password: new_password, new_passwordRepeat
@@ -59,19 +56,18 @@ angular.module('newsApp')
                 if(v) zaznaczoneId.push($scope.Categories[i].id);
             });
  
-            $http.put('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/', {  
+            $http.put(baseUrl + '/api/v1/users/me/', {  
                 user: {
                     category_ids: zaznaczoneId
                 }
             }).success(function(){
                 if(zaznaczoneId!=""){
-                swal("", "Your category have been changed", "success")
+                	swal("", "Your category have been changed", "success");
                 }
                 else{
                 	console.log('zero zmian kategorii'); 
                 }
             });
- 
         };
 
         $scope.isChecked = function(model){

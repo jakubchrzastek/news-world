@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('newsApp')
-	.controller('fullArticleCtrl', ['$scope', '$http', '$stateParams', function ($scope, $http, $stateParams) {
-
-		$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId).success(function(response){
+	.controller('fullArticleCtrl', ['$scope', '$http', '$stateParams', 'baseUrl', 
+		function ($scope, $http, $stateParams, baseUrl) {
+		$http.get(baseUrl + '/api/v1/news/' + $stateParams.articleId).success(function(response){
 			$scope.article = response.news;			
 		});
 
@@ -13,7 +13,7 @@ angular.module('newsApp')
 
 		$scope.like = function(){
 			if($scope.article.voted==null){
-				$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/votes', 
+				$http.post(baseUrl + '/api/v1/news/' + $stateParams.articleId + '/votes', 
 				{
 					vote: { 
 						value: true
@@ -25,7 +25,7 @@ angular.module('newsApp')
 
 				});
 			} else if($scope.article.voted==false) {
-				$http.put('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/votes', 
+				$http.put(baseUrl + '/api/v1/news/' + $stateParams.articleId + '/votes', 
 				{
 					vote: { 
 						value: true
@@ -44,7 +44,7 @@ angular.module('newsApp')
 
 		$scope.dislike = function(){
 			if($scope.article.voted==null){
-				$http.post('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/votes', 
+				$http.post(baseUrl + '/api/v1/news/' + $stateParams.articleId + '/votes', 
 				{
 					vote: { 
 						value: false
@@ -57,7 +57,7 @@ angular.module('newsApp')
 					console.log("niewyslano po raz 1 - dislike");
 				});
 			} else if($scope.article.voted==true) {
-				$http.put('http://news-world.iiar.pwr.edu.pl/api/v1/news/' + $stateParams.articleId + '/votes', 
+				$http.put(baseUrl + '/api/v1/news/' + $stateParams.articleId + '/votes', 
 				{
 					vote: { 
 						value: false

@@ -1,27 +1,27 @@
 'use strict';
 
 angular.module('newsApp')
-	.controller('adminManageArticlesCtrl', ['$scope', '$http', function ($scope, $http) {
-    	$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/news/').success(function(response){
+	.controller('adminManageArticlesCtrl', ['$scope', '$http', 'baseUrl', function ($scope, $http, baseUrl) {
+    	$http.get(baseUrl + '/api/v1/news/').success(function(response){
             $scope.ManageArticles = response.news;
         });
 
-        $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/categories/').success(function(response){
+        $http.get(baseUrl + '/api/v1/categories/').success(function(response){
             $scope.Categories = response.categories;
         });
 
         $scope.clearInput = function (){
             $scope.searchFilter = "";
-        }
+        };
         
     	$scope.deleteNews = function (articleId) {
             swal({   
-            title: "Are you sure?", 
-            type: "warning",   
-            showCancelButton: true,   
-            confirmButtonColor: "#DD6B55",   
-            confirmButtonText: "Yes, delete it!",   
-            closeOnConfirm: false 
+                title: "Are you sure?", 
+                type: "warning",   
+                showCancelButton: true,   
+                confirmButtonColor: "#DD6B55",   
+                confirmButtonText: "Yes, delete it!",   
+                closeOnConfirm: false 
             }, 
             function(){  
                for(var i = 0; i < $scope.ManageArticles.length; i++) {
@@ -31,6 +31,8 @@ angular.module('newsApp')
                             $scope.ManageArticles.splice(index ,1);
                             swal("Deleted!", "Article has been removed", "success");         
                         }); 
+                        
+                        break;
                     }
                 }       
             });

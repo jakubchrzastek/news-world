@@ -1,20 +1,20 @@
 'use strict';
 
 angular.module('newsApp')
-	.controller('loginCtrl', ['$scope', '$location', 'ValidationService', 
-	function($scope, $location, ValidationService){
+	.controller('loginCtrl', ['$scope', '$state', 'ValidationService', 
+	function($scope, $state, ValidationService){
 		$scope.signIn = function (login, password){
 			ValidationService.signIn(login,password)
 			.then(function(response){
 				//poprawna odpowiedz serwera
 				if(ValidationService.userData.role==='admin')
-					$location.path('/admin/news');
+					$state.go('admin.news');
 				else{
 					if(ValidationService.userData.categories_set){
-						$location.path('/user/news');
+						$state.go('user.news');
 					}
 					else{
-						$location.path('/setcategory');
+						$state.go('setcategory');
 					}
 				} 
 			}, function(response){

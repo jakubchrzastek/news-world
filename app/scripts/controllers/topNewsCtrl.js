@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('newsApp')
-	.controller('topNewsCtrl', ['$scope', '$http', function ($scope, $http) {
-		$http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/news/top/').success(function(response){
+	.controller('topNewsCtrl', ['$scope', '$http', 'baseUrl', function ($scope, $http, baseUrl) {
+		$http.get(baseUrl + '/api/v1/users/me/news/top/').success(function(response){
 	        $scope.topNews = response.news;
 	   	});
 
@@ -10,7 +10,7 @@ angular.module('newsApp')
 	        $scope.searchFilter = "";
 	    };
 
-	    $http.get('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/').success(function(response){
+	    $http.get(baseUrl + '/api/v1/users/me/').success(function(response){
 	        $scope.topCategories = response.user.categories;
 	   	});
 	}]);
