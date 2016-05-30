@@ -42,12 +42,7 @@ angular.module('newsApp')
 							original_password: current,
 							new_password: new_password, new_passwordRepeat
 						}
-					},
-					{
-						headers: {
-							Authorization: 'Token ' + sessionStorage.getItem('token')
-						}
-				}).success(function(){
+					}).success(function(){
 					swal("Success!", "You successfull change your password", "success");
 				}).error(function(){
 					swal("Some Error!", "Problem with communication to the server", "error");
@@ -67,10 +62,6 @@ angular.module('newsApp')
             $http.put('http://news-world.iiar.pwr.edu.pl/api/v1/users/me/', {  
                 user: {
                     category_ids: zaznaczoneId
-                }
-            }, {
-                headers: {
-                    Authorization: 'Token ' + sessionStorage.getItem('token')
                 }
             }).success(function(){
                 if(zaznaczoneId!=""){
